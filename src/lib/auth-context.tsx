@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  getAdditionalUserInfo,
   signOut as firebaseSignOut,
   updateProfile,
   User,
@@ -84,7 +85,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsGuest(false);
     localStorage.removeItem("zyto_guest_mode");
     const cred = await signInWithPopup(auth, googleProvider);
-    if (cred.additionalUserInfo?.isNewUser) {
+    const info = getAdditionalUserInfo(cred);
+    if (info?.isNewUser) {
       const db = getFirestore();
       await setDoc(doc(db, "users", cred.user.uid), {
         uid: cred.user.uid,
