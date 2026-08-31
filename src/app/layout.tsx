@@ -1,16 +1,19 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
 import UpdateChecker from "@/components/update-checker";
 
+const inter = Inter({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
-  title: "Ctt - Task & Budget",
-  description: "Todolist dan pencatatan keuangan",
+  title: "Alflow - Atur Tugas & Keuangan",
+  description: "Workspace untuk tugas, keuangan, anggaran, dan tabungan",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Ctt",
+    title: "Alflow",
   },
   formatDetection: {
     telephone: false,
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#4f46e5",
+  themeColor: "#1597e5",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -27,11 +30,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id">
+    <html lang="id" className={inter.className}>
       <head>
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
-      <body className="min-h-screen bg-gray-50 antialiased">
+      <body className="min-h-screen bg-background antialiased">
         <AuthProvider>
           {children}
           <UpdateChecker />

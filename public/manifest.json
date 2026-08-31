@@ -1,11 +1,11 @@
 {
-  "name": "Ctt - Task & Budget",
-  "short_name": "Ctt",
-  "description": "Todolist dan pencatatan keuangan",
+  "name": "Alflow - Atur Tugas & Keuangan",
+  "short_name": "Alflow",
+  "description": "Workspace untuk tugas, keuangan, anggaran, dan tabungan",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4f46e5",
+  "background_color": "#f8fafc",
+  "theme_color": "#1597e5",
   "orientation": "portrait-primary",
   "icons": [
     {
