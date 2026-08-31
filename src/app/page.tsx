@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle2, ListTodo, Wallet, PiggyBank, Download,
   Target, Repeat, ArrowRight, Github,
-  PieChart, TrendingDown,
+  TrendingDown,
   ChevronRight, Menu, X,
 } from "lucide-react";
 
@@ -52,6 +52,7 @@ export default function Home() {
             <span className="text-[15px] font-bold tracking-tight">Alflow</span>
           </Link>
           <div className="hidden items-center gap-6 md:flex">
+            <a href="#beranda" className="text-[14px] text-[#64748b] hover:text-[#0f172a] transition-colors">Beranda</a>
             <a href="#apa" className="text-[14px] text-[#64748b] hover:text-[#0f172a] transition-colors">Fitur</a>
             <a href="#cara" className="text-[14px] text-[#64748b] hover:text-[#0f172a] transition-colors">Cara Kerja</a>
             <a href="#detail" className="text-[14px] text-[#64748b] hover:text-[#0f172a] transition-colors">Detail</a>
@@ -69,6 +70,7 @@ export default function Home() {
         {menuOpen && (
           <div className="border-t border-[#e2e8f0] bg-white px-5 py-4 md:hidden">
             <div className="space-y-3">
+              <a href="#beranda" onClick={() => setMenuOpen(false)} className="block text-[14px] font-medium text-[#475569]">Beranda</a>
               <a href="#apa" onClick={() => setMenuOpen(false)} className="block text-[14px] font-medium text-[#475569]">Fitur</a>
               <a href="#cara" onClick={() => setMenuOpen(false)} className="block text-[14px] font-medium text-[#475569]">Cara Kerja</a>
               <a href="#detail" onClick={() => setMenuOpen(false)} className="block text-[14px] font-medium text-[#475569]">Detail</a>
@@ -79,7 +81,7 @@ export default function Home() {
       </nav>
 
       {/* ────────── HERO — asymmetric, not just grid ────────── */}
-      <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden">
+      <section id="beranda" className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden">
         <div className="absolute -top-40 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-[.06] blur-3xl" style={{ background: "radial-gradient(ellipse, #65c4ff, transparent 70%)" }} />
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
@@ -146,111 +148,143 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ────────── STAT STRIP ────────── */}
-      <section className="border-y border-[#e2e8f0]/60 bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
-            {[
-              { n: "2.400+", l: "Transaksi tercatat" },
-              { n: "180+", l: "Tugas selesai" },
-              { n: "98%", l: "Budget terpantau" },
-              { n: "100%", l: "Gratis" },
-            ].map(s => (
-              <div key={s.l} className="text-center">
-                <p className="text-[22px] font-bold tracking-tight text-[#0f172a]">{s.n}</p>
-                <p className="text-[13px] text-[#94a3b8]">{s.l}</p>
+      {/* ────────── FITUR — bento grid, dark bg ────────── */}
+      <section id="apa" className="bg-[#0f172a] py-24 sm:py-32">
+        <div className="mx-auto max-w-6xl px-5">
+          <Animate>
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#65c4ff] mb-3">Kenapa Alflow?</p>
+              <h2 className="text-[28px] font-bold tracking-[-0.01em] sm:text-[36px] leading-[1.15] text-white">Anda butuh satu tempat<br className="hidden sm:block" /> untuk mengatur semuanya.</h2>
+              <p className="mt-4 text-[16px] leading-[1.6] text-white/50">Bukan daftar tugas biasa, bukan aplikasi keuangan biasa. Alflow menggabungkan keduanya — jadi Anda tidak perlu lompat-lompat.</p>
+            </div>
+          </Animate>
+
+          {/* Bento — dark cards */}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+            <Animate delay={0} className="sm:col-span-2 lg:col-span-2 rounded-[20px] border border-white/10 bg-white/5 overflow-hidden hover:bg-white/[.07] transition-all hover:-translate-y-0.5">
+              <div className="p-6 pb-0">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#65c4ff]/10 text-[#65c4ff]"><ListTodo className="h-5 w-5" /></div>
+                  <h3 className="text-[17px] font-semibold text-white">Catatan Tugas</h3>
+                </div>
+                <p className="text-[14px] text-white/50 leading-relaxed mb-5">Buat tugas, bagi menjadi subtask, atur prioritas &amp; deadline. Kalau ada yang terlambat, langsung terlihat.</p>
               </div>
-            ))}
+              <div className="mx-5 mb-5 rounded-[14px] border border-white/10 bg-white/5 p-4">
+                <div className="space-y-2.5">
+                  <TaskItemDark text="Kirim laporan bulanan" p="Tinggi" state="active" />
+                  <TaskItemDark text="Review desain UI v2" p="Sedang" state="active" />
+                  <TaskItemDark text="Bayar internet" p="Tinggi" state="overdue" />
+                  <TaskItemDark text="Backup file project" p="Rendah" state="done" />
+                </div>
+              </div>
+            </Animate>
+
+            <Animate delay={0.08} className="sm:col-span-2 lg:col-span-1 rounded-[20px] border border-white/10 bg-white/5 overflow-hidden hover:bg-white/[.07] transition-all hover:-translate-y-0.5">
+              <div className="p-6 pb-0">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#10b981]/10 text-[#10b981]"><Wallet className="h-5 w-5" /></div>
+                  <h3 className="text-[17px] font-semibold text-white">Keuangan Jelas</h3>
+                </div>
+                <p className="text-[14px] text-white/50 leading-relaxed mb-5">Pemasukan, pengeluaran, saldo — semuanya terlihat dalam satu pandangan.</p>
+              </div>
+              <div className="mx-5 mb-5 rounded-[14px] border border-white/10 bg-white/5 p-4 space-y-2.5">
+                <MiniTxDark name="Gaji" amt="+Rp5.000.000" c="#10b981" />
+                <MiniTxDark name="Kos" amt="−Rp1.200.000" c="#ef4444" />
+                <MiniTxDark name="Makan" amt="−Rp450.000" c="#ef4444" />
+              </div>
+            </Animate>
+
+            <Animate delay={0.12} className="rounded-[20px] border border-white/10 bg-white/5 p-6 hover:bg-white/[.07] transition-all hover:-translate-y-0.5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#f59e0b]/10 text-[#f59e0b] mb-3"><Target className="h-5 w-5" /></div>
+              <h3 className="text-[17px] font-semibold text-white mb-1.5">Batas Anggaran</h3>
+              <p className="text-[14px] text-white/50 leading-relaxed mb-4">Tetapkan limit per kategori. Kalau sudah mulai mendekati batas, Alflow akan memberi tahu.</p>
+              <div className="rounded-[12px] border border-white/10 bg-white/5 p-3.5">
+                <div className="flex items-center justify-between text-[13px] mb-1.5">
+                  <span className="font-medium text-white/80">Makanan</span>
+                  <span className="font-semibold text-[#f59e0b]">72%</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-white/10 overflow-hidden"><div className="h-full rounded-full bg-[#f59e0b]" style={{ width: "72%" }} /></div>
+                <p className="text-[12px] text-white/40 mt-1.5">Rp720.000 / Rp1.000.000</p>
+              </div>
+            </Animate>
+
+            <Animate delay={0.16} className="rounded-[20px] border border-white/10 bg-white/5 p-6 hover:bg-white/[.07] transition-all hover:-translate-y-0.5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#10b981]/10 text-[#10b981] mb-3"><PiggyBank className="h-5 w-5" /></div>
+              <h3 className="text-[17px] font-semibold text-white mb-1.5">Target Tabungan</h3>
+              <p className="text-[14px] text-white/50 leading-relaxed mb-4">Buat rencana nabung, atur target &amp; deadline. Progress bar-nya membuat termotivasi.</p>
+              <div className="rounded-[12px] border border-white/10 bg-white/5 p-3.5">
+                <div className="flex items-center justify-between text-[13px] mb-1.5">
+                  <span className="font-medium text-white/80">Dana Darurat</span>
+                  <span className="font-semibold text-[#65c4ff]">65%</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-white/10 overflow-hidden"><div className="h-full rounded-full bg-[#65c4ff]" style={{ width: "65%" }} /></div>
+                <p className="text-[12px] text-white/40 mt-1.5">45 hari lagi · Rp72.222/hari</p>
+              </div>
+            </Animate>
+
+            <Animate delay={0.2} className="rounded-[20px] border border-white/10 bg-white/5 p-6 hover:bg-white/[.07] transition-all hover:-translate-y-0.5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#8b5cf6]/10 text-[#8b5cf6] mb-3"><Repeat className="h-5 w-5" /></div>
+              <h3 className="text-[17px] font-semibold text-white mb-1.5">Transaksi Berulang</h3>
+              <p className="text-[14px] text-white/50 leading-relaxed">Gaji bulanan, bayar kos, langganan — atur otomatis, tidak perlu input manual setiap bulan.</p>
+            </Animate>
           </div>
         </div>
       </section>
 
-      {/* ────────── FITUR — bento grid + overlapping ────────── */}
-      <section id="apa" className="py-24 sm:py-32">
+      {/* ────────── REKAP BULANAN — full-bleed cerah ────────── */}
+      <section className="bg-[#f8fafc] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
-            <div className="mx-auto max-w-2xl text-center mb-16">
-              <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Kenapa Alflow?</p>
-              <h2 className="text-[28px] font-bold tracking-[-0.01em] sm:text-[36px] leading-[1.15]">Anda butuh satu tempat<br className="hidden sm:block" /> untuk mengatur semuanya.</h2>
-              <p className="mt-4 text-[16px] leading-[1.6] text-[#64748b]">Bukan daftar tugas biasa, bukan aplikasi keuangan biasa. Alflow menggabungkan keduanya — jadi Anda tidak perlu lompat-lompat.</p>
+            <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+              <div>
+                <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Rekap Bulanan</p>
+                <h2 className="text-[28px] font-bold tracking-[-0.01em] sm:text-[36px] leading-[1.15]">Uang Anda habis untuk apa saja,<br />semuanya terlihat di sini.</h2>
+                <p className="mt-5 text-[16px] leading-[1.7] text-[#64748b]">
+                  Lihat pie chart pengeluaran per kategori. Tahu persis uang Anda habis untuk apa saja — dari makanan, transport, sampai hiburan. Tidak perlu menebak-nebak lagi.
+                </p>
+                <ul className="mt-5 space-y-2.5">
+                  {[
+                    "Pie chart interaktif per kategori",
+                    "Rekap per bulan yang bisa di-scroll",
+                    "Bandingkan pengeluaran bulan ini vs bulan lalu",
+                  ].map(t => (
+                    <li key={t} className="flex items-start gap-2 text-[14px] text-[#475569]">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#1597e5]" /> {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
+                <div className="flex items-center justify-between mb-5">
+                  <p className="text-[13px] font-semibold text-[#0f172a]">Rekap Maret 2026</p>
+                  <span className="text-[12px] font-medium text-[#94a3b8]">Rp3.200.000 total</span>
+                </div>
+                <div className="flex items-center justify-center mb-6">
+                  <svg viewBox="0 0 120 120" className="h-40 w-40">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" strokeWidth="18" />
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#ef4444" strokeWidth="18" strokeDasharray="110 204" strokeDashoffset="0" strokeLinecap="round" transform="rotate(-90 60 60)" />
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#f59e0b" strokeWidth="18" strokeDasharray="63 251" strokeDashoffset="-110" strokeLinecap="round" transform="rotate(-90 60 60)" />
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#3b82f6" strokeWidth="18" strokeDasharray="45 269" strokeDashoffset="-173" strokeLinecap="round" transform="rotate(-90 60 60)" />
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#10b981" strokeWidth="18" strokeDasharray="32 282" strokeDashoffset="-218" strokeLinecap="round" transform="rotate(-90 60 60)" />
+                  </svg>
+                </div>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {[
+                    { cat: "Makanan", pct: "35%", color: "#ef4444" },
+                    { cat: "Transport", pct: "20%", color: "#f59e0b" },
+                    { cat: "Tagihan", pct: "14%", color: "#3b82f6" },
+                    { cat: "Hiburan", pct: "10%", color: "#10b981" },
+                  ].map(c => (
+                    <div key={c.cat} className="flex items-center gap-2 rounded-[10px] bg-[#f8fafc] px-3 py-2">
+                      <span className="h-2.5 w-2.5 rounded-full" style={{ background: c.color }} />
+                      <span className="text-[13px] font-medium text-[#475569]">{c.cat}</span>
+                      <span className="ml-auto text-[13px] font-bold tabular-nums" style={{ color: c.color }}>{c.pct}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </Animate>
-
-          {/* Bento — 2 large + 4 small, asymmetric */}
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-            <Animate delay={0} className="sm:col-span-2 lg:col-span-2 rounded-[20px] border border-[#e2e8f0] bg-white overflow-hidden hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
-              <div className="p-6 pb-0">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#eaf7ff] text-[#1597e5]"><ListTodo className="h-5 w-5" /></div>
-                  <h3 className="text-[17px] font-semibold">Catatan Tugas</h3>
-                </div>
-                <p className="text-[14px] text-[#64748b] leading-relaxed mb-5">Buat tugas, bagi menjadi subtask, atur prioritas &amp; deadline. Kalau ada yang terlambat, langsung terlihat.</p>
-              </div>
-              <div className="mx-5 mb-5 rounded-[14px] border border-[#e2e8f0] bg-[#f8fafc] p-4">
-                <div className="space-y-2.5">
-                  <TaskItem text="Kirim laporan bulanan" p="Tinggi" state="active" />
-                  <TaskItem text="Review desain UI v2" p="Sedang" state="active" />
-                  <TaskItem text="Bayar internet" p="Tinggi" state="overdue" />
-                  <TaskItem text="Backup file project" p="Rendah" state="done" />
-                </div>
-              </div>
-            </Animate>
-
-            <Animate delay={0.08} className="sm:col-span-2 lg:col-span-1 rounded-[20px] border border-[#e2e8f0] bg-white overflow-hidden hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
-              <div className="p-6 pb-0">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#ecfdf5] text-[#10b981]"><Wallet className="h-5 w-5" /></div>
-                  <h3 className="text-[17px] font-semibold">Keuangan Jelas</h3>
-                </div>
-                <p className="text-[14px] text-[#64748b] leading-relaxed mb-5">Pemasukan, pengeluaran, saldo — semuanya terlihat dalam satu pandangan.</p>
-              </div>
-              <div className="mx-5 mb-5 rounded-[14px] border border-[#e2e8f0] bg-[#f8fafc] p-4 space-y-2.5">
-                <MiniTx name="Gaji" amt="+Rp5.000.000" c="#10b981" />
-                <MiniTx name="Kos" amt="−Rp1.200.000" c="#ef4444" />
-                <MiniTx name="Makan" amt="−Rp450.000" c="#ef4444" />
-              </div>
-            </Animate>
-
-            <Animate delay={0.12} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#fff7ed] text-[#f59e0b] mb-3"><Target className="h-5 w-5" /></div>
-              <h3 className="text-[17px] font-semibold mb-1.5">Batas Anggaran</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed mb-4">Tetapkan limit per kategori. Kalau sudah mulai mendekati batas, Alflow akan memberi tahu.</p>
-              <div className="rounded-[12px] border border-[#e2e8f0] bg-[#f8fafc] p-3.5">
-                <div className="flex items-center justify-between text-[13px] mb-1.5">
-                  <span className="font-medium text-[#0f172a]">Makanan</span>
-                  <span className="font-semibold text-[#f59e0b]">72%</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-[#e2e8f0] overflow-hidden"><div className="h-full rounded-full bg-[#f59e0b]" style={{ width: "72%" }} /></div>
-                <p className="text-[12px] text-[#94a3b8] mt-1.5">Rp720.000 / Rp1.000.000</p>
-              </div>
-            </Animate>
-
-            <Animate delay={0.16} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#f0fdf4] text-[#10b981] mb-3"><PiggyBank className="h-5 w-5" /></div>
-              <h3 className="text-[17px] font-semibold mb-1.5">Target Tabungan</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed mb-4">Buat rencana nabung, atur target &amp; deadline. Progress bar-nya membuat termotivasi.</p>
-              <div className="rounded-[12px] border border-[#e2e8f0] bg-[#f8fafc] p-3.5">
-                <div className="flex items-center justify-between text-[13px] mb-1.5">
-                  <span className="font-medium text-[#0f172a]">Dana Darurat</span>
-                  <span className="font-semibold text-[#1597e5]">65%</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-[#e2e8f0] overflow-hidden"><div className="h-full rounded-full bg-[#1597e5]" style={{ width: "65%" }} /></div>
-                <p className="text-[12px] text-[#94a3b8] mt-1.5">45 hari lagi · Rp72.222/hari</p>
-              </div>
-            </Animate>
-
-            <Animate delay={0.2} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#faf5ff] text-[#8b5cf6] mb-3"><Repeat className="h-5 w-5" /></div>
-              <h3 className="text-[17px] font-semibold mb-1.5">Transaksi Berulang</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed">Gaji bulanan, bayar kos, langganan — atur otomatis, tidak perlu input manual setiap bulan.</p>
-            </Animate>
-
-            <Animate delay={0.24} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#eff6ff] text-[#3b82f6] mb-3"><PieChart className="h-5 w-5" /></div>
-              <h3 className="text-[17px] font-semibold mb-1.5">Rekap Bulanan</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed">Lihat pie chart pengeluaran per kategori. Tahu persis uang Anda habis untuk apa saja.</p>
-            </Animate>
-          </div>
         </div>
       </section>
 
@@ -286,111 +320,114 @@ export default function Home() {
       {/* ────────── DETAIL — alternating full-bleed sections ────────── */}
       <section id="detail" className="py-24 sm:py-32">
 
-        {/* Tugas — full-bleed accent bg + offset visual */}
-        <div className="relative">
-          <div className="absolute inset-0 -z-10 bg-[#eaf7ff]/40" />
-          <div className="mx-auto max-w-6xl px-5 py-20 sm:py-28">
-            <Animate>
-              <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Manajemen Tugas</p>
-                  <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Tugas yang jelas,<br />tanpa perlu berpikir dua kali.</h3>
-                  <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
-                    Mulai dari yang kecil — &quot;beli kopi&quot; — sampai yang besar — &quot;menyelesaikan proposal&quot;. Alflow membantu Anda mengurutkan mana yang harus dikerjakan terlebih dahulu, mana yang bisa menunggu.
-                  </p>
-                  <ul className="mt-5 space-y-2.5">
-                    {["Subtask untuk memecah menjadi bagian kecil", "Prioritas: rendah, sedang, tinggi", "Deadline yang terlihat jelas"].map(t => (
-                      <li key={t} className="flex items-start gap-2 text-[14px] text-[#475569]">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#1597e5]" /> {t}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
-                  <div className="space-y-2.5">
-                    <TaskItem text="Selesaikan laporan Q2" p="Tinggi" state="active" />
-                    <TaskItem text="Riset kompetitor" p="Sedang" state="active" />
-                    <TaskItem text="Meeting jam 3 sore" p="Tinggi" state="overdue" />
-                    <TaskItem text="Update README" p="Rendah" state="done" />
-                    <TaskItem text="Deploy staging" p="Sedang" state="active" />
-                  </div>
-                </div>
-              </div>
-            </Animate>
-          </div>
-        </div>
-
-        {/* Keuangan — full-bleed dark bg */}
+        {/* Tugas — full-bleed dark bg */}
         <div className="relative">
           <div className="absolute inset-0 -z-10 bg-[#0f172a]" />
           <div className="mx-auto max-w-6xl px-5 py-20 sm:py-28">
             <Animate>
-              <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-                <div className="rounded-[20px] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-                  <div className="grid grid-cols-3 gap-3 mb-4">
-                    <MetricCard label="Saldo" val="Rp5.3Jt" accent="#65c4ff" bg="rgba(101,196,255,.1)" />
-                    <MetricCard label="Masuk" val="+Rp8.5Jt" accent="#10b981" bg="rgba(16,185,129,.1)" />
-                    <MetricCard label="Keluar" val="−Rp3.2Jt" accent="#ef4444" bg="rgba(239,68,68,.1)" />
-                  </div>
-                  <div className="space-y-2">
-                    <TxLineDark name="Gaji Bulanan" cat="Gaji" amt="+Rp5.000.000" color="#10b981" />
-                    <TxLineDark name="Sewa Kos" cat="Tagihan" amt="−Rp1.200.000" color="#ef4444" />
-                    <TxLineDark name="Groceries" cat="Makanan" amt="−Rp450.000" color="#ef4444" />
-                  </div>
-                </div>
+              <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
                 <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#65c4ff] mb-3">Keuangan Pribadi</p>
-                  <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15] text-white">Uang masuk dan keluar,<br />semuanya terlihat.</h3>
+                  <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#65c4ff] mb-3">Manajemen Tugas</p>
+                  <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15] text-white">Tugas yang jelas,<br />tanpa perlu berpikir dua kali.</h3>
                   <p className="mt-4 text-[15px] leading-[1.7] text-white/60">
-                    Tidak perlu lagi menebak-nebak sisa saldo di akhir bulan. Catat setiap transaksi, pilih kategori yang tepat, dan biarkan Alflow menghitung semuanya untuk Anda.
+                    Mulai dari yang kecil — &quot;beli kopi&quot; — sampai yang besar — &quot;menyelesaikan proposal&quot;. Alflow membantu Anda mengurutkan mana yang harus dikerjakan terlebih dahulu, mana yang bisa menunggu.
                   </p>
                   <ul className="mt-5 space-y-2.5">
-                    {["Kategori: Makanan, Transport, Tagihan, dll.", "Pie chart distribusi pengeluaran", "Rekap per bulan yang bisa di-scroll"].map(t => (
+                    {["Subtask untuk memecah menjadi bagian kecil", "Prioritas: rendah, sedang, tinggi", "Deadline yang terlihat jelas"].map(t => (
                       <li key={t} className="flex items-start gap-2 text-[14px] text-white/70">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#65c4ff]" /> {t}
                       </li>
                     ))}
                   </ul>
                 </div>
+                <div className="rounded-[20px] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+                  <div className="space-y-2.5">
+                    <TaskItemDark text="Selesaikan laporan Q2" p="Tinggi" state="active" />
+                    <TaskItemDark text="Riset kompetitor" p="Sedang" state="active" />
+                    <TaskItemDark text="Meeting jam 3 sore" p="Tinggi" state="overdue" />
+                    <TaskItemDark text="Update README" p="Rendah" state="done" />
+                    <TaskItemDark text="Deploy staging" p="Sedang" state="active" />
+                  </div>
+                </div>
               </div>
             </Animate>
           </div>
         </div>
 
-        {/* Tabungan & Anggaran — asymmetric, offset visual */}
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:py-28">
-          <Animate>
-            <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-              <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Tabungan &amp; Anggaran</p>
-                <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Menabung ada target,<br />belanja ada batas.</h3>
-                <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
-                  Buat rencana nabung untuk liburan, dana darurat, atau gadget baru. Atur juga budget bulanan per kategori — agar tidak melebihi batas.
-                </p>
-                <div className="mt-5 space-y-3">
-                  <BudgetBar cat="Makanan" used="Rp720K" total="Rp1Jt" pct={72} />
-                  <BudgetBar cat="Transport" used="Rp350K" total="Rp500K" pct={70} />
-                  <BudgetBar cat="Hiburan" used="Rp120K" total="Rp300K" pct={40} />
+        {/* Keuangan — full-bleed light bg */}
+        <div className="relative">
+          <div className="absolute inset-0 -z-10 bg-[#f8fafc]" />
+          <div className="mx-auto max-w-6xl px-5 py-20 sm:py-28">
+            <Animate>
+              <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+                <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
+                  <div className="grid grid-cols-3 gap-3 mb-4">
+                    <MetricCard label="Saldo" val="Rp5.3Jt" accent="#1597e5" bg="#eaf7ff" />
+                    <MetricCard label="Masuk" val="+Rp8.5Jt" accent="#10b981" bg="#ecfdf5" />
+                    <MetricCard label="Keluar" val="−Rp3.2Jt" accent="#ef4444" bg="#fef2f2" />
+                  </div>
+                  <div className="space-y-2">
+                    <TxLine name="Gaji Bulanan" cat="Gaji" amt="+Rp5.000.000" color="#10b981" />
+                    <TxLine name="Sewa Kos" cat="Tagihan" amt="−Rp1.200.000" color="#ef4444" />
+                    <TxLine name="Groceries" cat="Makanan" amt="−Rp450.000" color="#ef4444" />
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Keuangan Pribadi</p>
+                  <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Uang masuk dan keluar,<br />semuanya terlihat.</h3>
+                  <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
+                    Tidak perlu lagi menebak-nebak sisa saldo di akhir bulan. Catat setiap transaksi, pilih kategori yang tepat, dan biarkan Alflow menghitung semuanya untuk Anda.
+                  </p>
+                  <ul className="mt-5 space-y-2.5">
+                    {["Kategori: Makanan, Transport, Tagihan, dll.", "Pie chart distribusi pengeluaran", "Rekap per bulan yang bisa di-scroll"].map(t => (
+                      <li key={t} className="flex items-start gap-2 text-[14px] text-[#475569]">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#1597e5]" /> {t}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
-                <p className="text-[12px] font-semibold uppercase tracking-wider text-[#94a3b8] mb-3">Rencana Tabungan</p>
-                <div className="rounded-[14px] border border-[#e2e8f0] bg-[#f8fafc] p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <p className="text-[15px] font-semibold text-[#0f172a]">Dana Darurat</p>
-                      <p className="text-[13px] text-[#94a3b8]">Target Rp10.000.000</p>
+            </Animate>
+          </div>
+        </div>
+
+        {/* Tabungan & Anggaran — full-bleed dark bg */}
+        <div className="relative">
+          <div className="absolute inset-0 -z-10 bg-[#0f172a]" />
+          <div className="mx-auto max-w-6xl px-5 py-20 sm:py-28">
+            <Animate>
+              <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#65c4ff] mb-3">Tabungan &amp; Anggaran</p>
+                  <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15] text-white">Menabung ada target,<br />belanja ada batas.</h3>
+                  <p className="mt-4 text-[15px] leading-[1.7] text-white/60">
+                    Buat rencana nabung untuk liburan, dana darurat, atau gadget baru. Atur juga budget bulanan per kategori — agar tidak melebihi batas.
+                  </p>
+                  <div className="mt-5 space-y-3">
+                    <BudgetBarDark cat="Makanan" used="Rp720K" total="Rp1Jt" pct={72} />
+                    <BudgetBarDark cat="Transport" used="Rp350K" total="Rp500K" pct={70} />
+                    <BudgetBarDark cat="Hiburan" used="Rp120K" total="Rp300K" pct={40} />
+                  </div>
+                </div>
+                <div className="rounded-[20px] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+                  <p className="text-[12px] font-semibold uppercase tracking-wider text-white/40 mb-3">Rencana Tabungan</p>
+                  <div className="rounded-[14px] border border-white/10 bg-white/5 p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <p className="text-[15px] font-semibold text-white">Dana Darurat</p>
+                        <p className="text-[13px] text-white/40">Target Rp10.000.000</p>
+                      </div>
+                      <span className="rounded-[8px] bg-[#65c4ff]/10 px-2.5 py-1 text-[12px] font-bold text-[#65c4ff]">65%</span>
                     </div>
-                    <span className="rounded-[8px] bg-[#eaf7ff] px-2.5 py-1 text-[12px] font-bold text-[#1597e5]">65%</span>
+                    <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                      <div className="h-full rounded-full bg-[#65c4ff]" style={{ width: "65%" }} />
+                    </div>
+                    <p className="text-[12px] text-white/40 mt-2">45 hari lagi · Rp72.222/hari</p>
                   </div>
-                  <div className="h-2 rounded-full bg-[#e2e8f0] overflow-hidden">
-                    <div className="h-full rounded-full bg-[#1597e5]" style={{ width: "65%" }} />
-                  </div>
-                  <p className="text-[12px] text-[#94a3b8] mt-2">45 hari lagi · Rp72.222/hari</p>
                 </div>
               </div>
-            </div>
-          </Animate>
+            </Animate>
+          </div>
         </div>
       </section>
 
@@ -494,22 +531,19 @@ function TxLine({ name, cat, amt, color }: { name: string; cat: string; amt: str
   );
 }
 
-function TxLineDark({ name, cat, amt, color }: { name: string; cat: string; amt: string; color: string }) {
-  return (
-    <div className="flex items-center justify-between rounded-[12px] bg-white/5 px-3.5 py-2.5">
-      <div>
-        <p className="text-[13px] font-medium text-white/90">{name}</p>
-        <p className="text-[11px] text-white/40">{cat}</p>
-      </div>
-      <span className="text-[13px] font-bold tabular-nums" style={{ color }}>{amt}</span>
-    </div>
-  );
-}
-
 function MiniTx({ name, amt, c }: { name: string; amt: string; c: string }) {
   return (
     <div className="flex items-center justify-between rounded-[12px] bg-[#f1f5f9] px-3 py-2.5">
       <span className="text-[13px] font-medium text-[#0f172a]">{name}</span>
+      <span className="text-[13px] font-bold tabular-nums" style={{ color: c }}>{amt}</span>
+    </div>
+  );
+}
+
+function MiniTxDark({ name, amt, c }: { name: string; amt: string; c: string }) {
+  return (
+    <div className="flex items-center justify-between rounded-[12px] bg-white/5 px-3 py-2.5">
+      <span className="text-[13px] font-medium text-white/80">{name}</span>
       <span className="text-[13px] font-bold tabular-nums" style={{ color: c }}>{amt}</span>
     </div>
   );
@@ -549,6 +583,30 @@ function TaskItem({ text, p, state }: { text: string; p: string; state: "active"
   );
 }
 
+function TaskItemDark({ text, p, state }: { text: string; p: string; state: "active" | "overdue" | "done" }) {
+  const pc = p === "Tinggi" ? "#ef4444" : p === "Sedang" ? "#f59e0b" : "#10b981";
+  return (
+    <div className={`flex items-center gap-3 rounded-[12px] border px-3.5 py-2.5 ${
+      state === "overdue" ? "border-red-500/20 bg-red-500/10" : state === "done" ? "border-white/10 bg-white/5 opacity-50" : "border-white/10 bg-white/5"
+    }`}>
+      <div className={`h-4 w-4 rounded border-2 flex items-center justify-center flex-shrink-0 ${
+        state === "done" ? "border-[#10b981] bg-[#10b981]" : "border-white/20"
+      }`}>
+        {state === "done" && <CheckCircle2 className="h-2.5 w-2.5 text-white" />}
+      </div>
+      <p className={`flex-1 text-[13px] font-medium ${
+        state === "done" ? "text-white/40 line-through" : state === "overdue" ? "text-[#ef4444]" : "text-white/90"
+      }`}>{text}</p>
+      <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full" style={{
+        background: state === "overdue" ? "rgba(239,68,68,.15)" : state === "done" ? "rgba(255,255,255,.05)" : `${pc}18`,
+        color: state === "overdue" ? "#ef4444" : state === "done" ? "rgba(255,255,255,.4)" : pc,
+      }}>
+        {state === "overdue" ? "Terlambat" : state === "done" ? "Selesai" : p}
+      </span>
+    </div>
+  );
+}
+
 function BudgetBar({ cat, used, total, pct }: { cat: string; used: string; total: string; pct: number }) {
   const c = pct >= 90 ? "#ef4444" : pct >= 75 ? "#f59e0b" : "#1597e5";
   return (
@@ -559,6 +617,20 @@ function BudgetBar({ cat, used, total, pct }: { cat: string; used: string; total
       </div>
       <div className="h-1.5 rounded-full bg-[#e2e8f0] overflow-hidden"><div className="h-full rounded-full" style={{ width: `${pct}%`, background: c }} /></div>
       <p className="text-[12px] text-[#94a3b8] mt-1.5">{used} / {total}</p>
+    </div>
+  );
+}
+
+function BudgetBarDark({ cat, used, total, pct }: { cat: string; used: string; total: string; pct: number }) {
+  const c = pct >= 90 ? "#ef4444" : pct >= 75 ? "#f59e0b" : "#65c4ff";
+  return (
+    <div className="rounded-[12px] border border-white/10 bg-white/5 p-3.5">
+      <div className="flex items-center justify-between text-[13px] mb-1.5">
+        <span className="font-medium text-white/80">{cat}</span>
+        <span className="font-semibold tabular-nums" style={{ color: c }}>{pct}%</span>
+      </div>
+      <div className="h-1.5 rounded-full bg-white/10 overflow-hidden"><div className="h-full rounded-full" style={{ width: `${pct}%`, background: c }} /></div>
+      <p className="text-[12px] text-white/40 mt-1.5">{used} / {total}</p>
     </div>
   );
 }
