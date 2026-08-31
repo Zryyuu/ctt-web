@@ -13,12 +13,11 @@ import { formatCurrency, formatDate, formatMonthYear } from "@/lib/utils";
 import {
   Plus, Trash2, TrendingUp, TrendingDown, Wallet, PiggyBank,
   ChevronLeft, ChevronRight, Calendar, ArrowUpCircle, ArrowDownCircle,
-  Repeat, PieChart, BarChart3, Target,
+  Repeat, Target,
 } from "lucide-react";
 
 const CATEGORIES = ["Makanan", "Transport", "Belanja", "Hiburan", "Tagihan", "Kesehatan", "Pendidikan", "Lainnya"];
 const INCOME_CATEGORIES = ["Gaji", "Investasi", "Tambahan", "Lainnya"];
-const ALL_CATEGORIES = [...CATEGORIES, ...INCOME_CATEGORIES];
 
 const CHART_COLORS = ["#4f46e5", "#ef4444", "#22c55e", "#f59e0b", "#8b5cf6", "#06b6d4", "#ec4899", "#14b8a6", "#f97316", "#6366f1"];
 
@@ -186,7 +185,7 @@ export default function BudgetPage() {
           {recurringTxs.filter((r) => r.isActive).length > 0 && (
             <RecurringSection recurring={recurringTxs} onExecute={executeRecurring} onDelete={deleteRecurring} />
           )}
-          <TransactionsTab transactions={transactions} onAdd={addTransaction} onDelete={deleteTransaction} />
+          <TransactionsTab transactions={transactions} onAdd={addTransaction} onDelete={deleteTransaction} onAddRecurring={addRecurring} />
         </>
       )}
       {tab === "savings" && (
@@ -231,7 +230,7 @@ function RecurringSection({ recurring, onExecute, onDelete }: { recurring: Recur
   );
 }
 
-function TransactionsTab({ transactions, onAdd, onDelete }: { transactions: Transaction[]; onAdd: (t: Transaction) => void; onDelete: (id: string) => void }) {
+function TransactionsTab({ transactions, onAdd, onDelete, onAddRecurring }: { transactions: Transaction[]; onAdd: (t: Transaction) => void; onDelete: (id: string) => void; onAddRecurring: (rt: RecurringTransaction) => void }) {
   const [showAdd, setShowAdd] = useState(false);
   const [showRecurring, setShowRecurring] = useState(false);
 
@@ -275,7 +274,7 @@ function TransactionsTab({ transactions, onAdd, onDelete }: { transactions: Tran
         </div>
       )}
       {showAdd && <AddTransactionDialog onAdd={(tx) => { onAdd(tx); setShowAdd(false); }} onClose={() => setShowAdd(false)} />}
-      {showRecurring && <AddRecurringDialog onAdd={(rt) => { addRecurring(rt); setShowRecurring(false); }} onClose={() => setShowRecurring(false)} />}
+      {showRecurring && <AddRecurringDialog onAdd={(rt) => { onAddRecurring(rt); setShowRecurring(false); }} onClose={() => setShowRecurring(false)} />}
     </div>
   );
 }
