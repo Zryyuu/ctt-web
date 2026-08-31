@@ -3,10 +3,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle2, ListTodo, Wallet, PiggyBank, Download,
-  BarChart3, Target, Repeat, ArrowRight, Github,
-  ClipboardCheck, PieChart, Sparkles, Shield, Zap, Globe,
-  ChevronRight, Menu, X, ArrowUpRight, TrendingDown, Clock,
-  Star, Heart, ArrowUpCircle, ArrowDownCircle,
+  Target, Repeat, ArrowRight, Github,
+  PieChart, TrendingDown,
+  ChevronRight, Menu, X,
 } from "lucide-react";
 
 function useInView(threshold = 0.1) {
@@ -317,7 +316,7 @@ export default function Home() {
                 <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Task Management</p>
                 <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Tugas yang jelas,<br />tanpa perlu berpikir dua kali.</h3>
                 <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
-                  Mulai dari yang kecil — "beli kopi" — sampai yang besar — "menyelesaikan proposal". Alflow membantu Anda mengurutkan mana yang harus dikerjakan terlebih dahulu, mana yang bisa menunggu.
+                  Mulai dari yang kecil — &quot;beli kopi&quot; — sampai yang besar — &quot;menyelesaikan proposal&quot;. Alflow membantu Anda mengurutkan mana yang harus dikerjakan terlebih dahulu, mana yang bisa menunggu.
                 </p>
                 <ul className="mt-5 space-y-2.5">
                   {["Subtask untuk memecah menjadi bagian kecil", "Prioritas: rendah, sedang, tinggi", "Deadline yang terlihat jelas"].map(t => (
