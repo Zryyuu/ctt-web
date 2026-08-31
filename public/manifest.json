@@ -1,6 +1,6 @@
 {
-  "name": "Zyto - Task & Budget",
-  "short_name": "Zyto",
+  "name": "Ctt - Task & Budget",
+  "short_name": "Ctt",
   "description": "Todolist dan pencatatan keuangan",
   "start_url": "/",
   "display": "standalone",

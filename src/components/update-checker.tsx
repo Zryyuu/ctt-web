@@ -15,14 +15,14 @@ export default function UpdateChecker() {
       const data = await res.json();
       const latest = data.version as string;
 
-      const stored = localStorage.getItem("zyto_app_version");
+      const stored = localStorage.getItem("ctt_app_version");
 
       if (stored && stored !== latest) {
         setCurrentVersion(latest);
         setShowUpdate(true);
       }
 
-      localStorage.setItem("zyto_app_version", latest);
+      localStorage.setItem("ctt_app_version", latest);
     } catch {
       // silent - offline or network error
     }
@@ -35,7 +35,7 @@ export default function UpdateChecker() {
   }, [checkForUpdate]);
 
   const handleUpdate = () => {
-    localStorage.setItem("zyto_app_version", currentVersion);
+    localStorage.setItem("ctt_app_version", currentVersion);
     window.location.reload();
   };
 

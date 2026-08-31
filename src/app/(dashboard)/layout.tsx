@@ -33,7 +33,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 border-b bg-white shadow-sm">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-          <Link href="/todos" className="text-xl font-bold text-indigo-600">Zyto</Link>
+          <Link href="/todos" className="text-xl font-bold text-indigo-600">Ctt</Link>
           <nav className="flex gap-1">
             {navItems.map((item) => {
               const active = pathname.startsWith(item.href);

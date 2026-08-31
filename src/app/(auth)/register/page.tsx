@@ -37,7 +37,7 @@ export default function RegisterPage() {
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-50 to-white px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-indigo-600">Zyto</h1>
+          <h1 className="text-3xl font-bold text-indigo-600">Ctt</h1>
           <p className="mt-2 text-gray-500">Buat akun baru</p>
         </div>
         <div className="rounded-2xl border bg-white p-6 shadow-lg">

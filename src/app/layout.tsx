@@ -4,13 +4,13 @@ import { AuthProvider } from "@/lib/auth-context";
 import UpdateChecker from "@/components/update-checker";
 
 export const metadata: Metadata = {
-  title: "Zyto - Task & Budget",
+  title: "Ctt - Task & Budget",
   description: "Todolist dan pencatatan keuangan",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Zyto",
+    title: "Ctt",
   },
   formatDetection: {
     telephone: false,

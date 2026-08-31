@@ -54,3 +54,45 @@ export interface SavingsTransaction {
   userId?: string;
   updatedAt?: string;
 }
+
+export interface BudgetLimit {
+  id: string;
+  category: string;
+  amount: number;
+  month: string;
+  userId?: string;
+}
+
+export interface RecurringTransaction {
+  id: string;
+  title: string;
+  amount: number;
+  category: string;
+  isIncome: boolean;
+  frequency: "daily" | "weekly" | "monthly" | "yearly";
+  nextDate: string;
+  notes: string;
+  isActive: boolean;
+  userId?: string;
+}
+
+export interface BudgetLimit {
+  id: string;
+  category: string;
+  amount: number;
+  month: string; // "YYYY-MM" format
+  userId?: string;
+}
+
+export interface RecurringTransaction {
+  id: string;
+  title: string;
+  amount: number;
+  category: string;
+  isIncome: boolean;
+  frequency: "daily" | "weekly" | "monthly" | "yearly";
+  nextDate: string;
+  notes: string;
+  isActive: boolean;
+  userId?: string;
+}

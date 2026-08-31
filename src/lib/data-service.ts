@@ -4,8 +4,10 @@ import {
   loadTransactions as fbLoadTransactions, saveTransactions as fbSaveTransactions,
   loadSavingsPlans as fbLoadPlans, saveSavingsPlans as fbSavePlans,
   loadSavingsTransactions as fbLoadSavTxs, saveSavingsTransactions as fbSaveSavTxs,
+  loadBudgetLimits as fbLoadBudgetLimits, saveBudgetLimits as fbSaveBudgetLimits,
+  loadRecurringTransactions as fbLoadRecurringTxs, saveRecurringTransactions as fbSaveRecurringTxs,
 } from "./firestore";
-import type { TodoItem, Transaction, SavingsPlan, SavingsTransaction } from "./types";
+import type { TodoItem, Transaction, SavingsPlan, SavingsTransaction, BudgetLimit, RecurringTransaction } from "./types";
 
 // --- localStorage helpers (guest mode) ---
 function localGet<T>(key: string): T[] {
@@ -28,10 +30,12 @@ function localSet<T>(key: string, data: T[]): void {
 }
 
 const KEYS = {
-  todos: "zyto_guest_todos",
-  transactions: "zyto_guest_transactions",
-  savingsPlans: "zyto_guest_savings_plans",
-  savingsTxs: "zyto_guest_savings_transactions",
+  todos: "ctt_guest_todos",
+  transactions: "ctt_guest_transactions",
+  savingsPlans: "ctt_guest_savings_plans",
+  savingsTxs: "ctt_guest_savings_transactions",
+  budgetLimits: "ctt_guest_budget_limits",
+  recurringTxs: "ctt_guest_recurring_transactions",
 } as const;
 
 function isGuest(): boolean {
@@ -116,5 +120,45 @@ export async function saveSavingsTransactions(txs: SavingsTransaction[]): Promis
   } catch (e) {
     console.error("Failed to save savings txs to Firestore:", e);
     localSet(KEYS.savingsTxs, txs);
+  }
+}
+
+export async function loadBudgetLimits(): Promise<BudgetLimit[]> {
+  if (isGuest()) return localGet<BudgetLimit>(KEYS.budgetLimits);
+  try {
+    return await fbLoadBudgetLimits();
+  } catch (e) {
+    console.error("Failed to load budget limits from Firestore:", e);
+    return localGet<BudgetLimit>(KEYS.budgetLimits);
+  }
+}
+
+export async function saveBudgetLimits(limits: BudgetLimit[]): Promise<void> {
+  if (isGuest()) { localSet(KEYS.budgetLimits, limits); return; }
+  try {
+    await fbSaveBudgetLimits(limits);
+  } catch (e) {
+    console.error("Failed to save budget limits to Firestore:", e);
+    localSet(KEYS.budgetLimits, limits);
+  }
+}
+
+export async function loadRecurringTransactions(): Promise<RecurringTransaction[]> {
+  if (isGuest()) return localGet<RecurringTransaction>(KEYS.recurringTxs);
+  try {
+    return await fbLoadRecurringTxs();
+  } catch (e) {
+    console.error("Failed to load recurring transactions from Firestore:", e);
+    return localGet<RecurringTransaction>(KEYS.recurringTxs);
+  }
+}
+
+export async function saveRecurringTransactions(txs: RecurringTransaction[]): Promise<void> {
+  if (isGuest()) { localSet(KEYS.recurringTxs, txs); return; }
+  try {
+    await fbSaveRecurringTxs(txs);
+  } catch (e) {
+    console.error("Failed to save recurring transactions to Firestore:", e);
+    localSet(KEYS.recurringTxs, txs);
   }
 }

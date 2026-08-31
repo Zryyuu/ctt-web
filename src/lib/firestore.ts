@@ -3,7 +3,7 @@ import {
   query, orderBy, serverTimestamp
 } from "firebase/firestore";
 import { db, auth } from "./firebase";
-import type { TodoItem, Transaction, SavingsPlan, SavingsTransaction } from "./types";
+import type { TodoItem, Transaction, SavingsPlan, SavingsTransaction, BudgetLimit, RecurringTransaction } from "./types";
 
 function getUserCollection(subcollection: string) {
   const uid = auth.currentUser?.uid;
@@ -74,6 +74,40 @@ export async function saveSavingsTransactions(txs: SavingsTransaction[]) {
   old.docs.forEach((d) => batch.delete(d.ref));
   for (const t of txs) {
     const ref = doc(getUserCollection("savings_transactions"), t.id);
+    batch.set(ref, { ...t, updatedAt: serverTimestamp() });
+  }
+  await batch.commit();
+}
+
+// --- Budget Limits ---
+export async function loadBudgetLimits(): Promise<BudgetLimit[]> {
+  const snap = await getDocs(query(getUserCollection("budget_limits")));
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() } as BudgetLimit));
+}
+
+export async function saveBudgetLimits(limits: BudgetLimit[]) {
+  const batch = writeBatch(db);
+  const old = await getDocs(getUserCollection("budget_limits"));
+  old.docs.forEach((d) => batch.delete(d.ref));
+  for (const l of limits) {
+    const ref = doc(getUserCollection("budget_limits"), l.id);
+    batch.set(ref, { ...l, updatedAt: serverTimestamp() });
+  }
+  await batch.commit();
+}
+
+// --- Recurring Transactions ---
+export async function loadRecurringTransactions(): Promise<RecurringTransaction[]> {
+  const snap = await getDocs(getUserCollection("recurring_transactions"));
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() } as RecurringTransaction));
+}
+
+export async function saveRecurringTransactions(txs: RecurringTransaction[]) {
+  const batch = writeBatch(db);
+  const old = await getDocs(getUserCollection("recurring_transactions"));
+  old.docs.forEach((d) => batch.delete(d.ref));
+  for (const t of txs) {
+    const ref = doc(getUserCollection("recurring_transactions"), t.id);
     batch.set(ref, { ...t, updatedAt: serverTimestamp() });
   }
   await batch.commit();

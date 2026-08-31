@@ -41,13 +41,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Check if guest mode was previously active
-    const wasGuest = localStorage.getItem("zyto_guest_mode") === "true";
+    const wasGuest = localStorage.getItem("ctt_guest_mode") === "true";
     const unsub = onAuthStateChanged(auth, (u) => {
       setUser(u);
       if (u) {
         // Logged in -> clear guest flag
         setIsGuest(false);
-        localStorage.removeItem("zyto_guest_mode");
+        localStorage.removeItem("ctt_guest_mode");
       } else if (wasGuest) {
         setIsGuest(true);
       }
@@ -58,18 +58,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const enterGuestMode = useCallback(() => {
     setIsGuest(true);
-    localStorage.setItem("zyto_guest_mode", "true");
+    localStorage.setItem("ctt_guest_mode", "true");
   }, []);
 
   const login = async (email: string, password: string) => {
     setIsGuest(false);
-    localStorage.removeItem("zyto_guest_mode");
+    localStorage.removeItem("ctt_guest_mode");
     await signInWithEmailAndPassword(auth, email, password);
   };
 
   const register = async (email: string, password: string, name: string) => {
     setIsGuest(false);
-    localStorage.removeItem("zyto_guest_mode");
+    localStorage.removeItem("ctt_guest_mode");
     const cred = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(cred.user, { displayName: name });
     const db = getFirestore();
@@ -83,7 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loginWithGoogle = async () => {
     setIsGuest(false);
-    localStorage.removeItem("zyto_guest_mode");
+    localStorage.removeItem("ctt_guest_mode");
     const cred = await signInWithPopup(auth, googleProvider);
     const info = getAdditionalUserInfo(cred);
     if (info?.isNewUser) {
@@ -100,7 +100,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = async () => {
     await firebaseSignOut(auth);
     setIsGuest(false);
-    localStorage.removeItem("zyto_guest_mode");
+    localStorage.removeItem("ctt_guest_mode");
   };
 
   const effectiveUser = user;
