@@ -43,7 +43,7 @@ export default function RegisterPage() {
             </div>
           </Link>
           <h1 className="mt-4 text-2xl font-bold text-[#0f172a]">Buat akun Alflow</h1>
-          <p className="mt-1 text-[14px] text-[#475569]">Mulai atur tugas dan keuanganmu</p>
+          <p className="mt-1 text-[14px] text-[#475569]">Mulai atur tugas dan keuangan Anda</p>
         </div>
         <div className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-card">
           {error && (
@@ -59,7 +59,7 @@ export default function RegisterPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full rounded-xl border border-[#e2e8f0] py-2.5 pl-10 pr-3 text-[14px] focus:border-[#1597e5] focus:outline-none focus:ring-1 focus:ring-[#1597e5]"
-                  placeholder="Nama kamu"
+                  placeholder="Nama Anda"
                   required
                 />
               </div>

@@ -98,7 +98,7 @@ export default function Home() {
                   </span>?
                 </h1>
                 <p className="mt-5 text-[16px] leading-[1.65] text-[#64748b]">
-                  Alflow bantu kamu urus semua dari satu tempat. Catat pengeluaran, atur deadline, sampai pantau tabungan — tanpa harus buka lima app berbeda.
+                  Alflow membantu Anda mengurus semua dari satu tempat. Catat pengeluaran, atur deadline, sampai pantau tabungan — tanpa harus membuka banyak aplikasi.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link href="/login" className="inline-flex items-center gap-2 rounded-[12px] bg-[#1597e5] px-6 py-3 text-[15px] font-semibold text-white hover:bg-[#1285cc] transition-all" style={{ boxShadow: "0 12px 35px rgba(101,196,255,.22)" }}>
@@ -185,7 +185,7 @@ export default function Home() {
             <div className="mx-auto max-w-2xl text-center mb-16">
               <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Kenapa Alflow?</p>
               <h2 className="text-[28px] font-bold tracking-[-0.01em] sm:text-[36px] leading-[1.15]">Kamu butuh satu tempat<br className="hidden sm:block" /> buat atur semuanya.</h2>
-              <p className="mt-4 text-[16px] leading-[1.6] text-[#64748b]">Bukan todo list biasa, bukan app keuangan biasa. Alflow gabungin keduanya — jadi kamu ga perlu lompat-lompat.</p>
+              <p className="mt-4 text-[16px] leading-[1.6] text-[#64748b]">Bukan daftar tugas biasa, bukan aplikasi keuangan biasa. Alflow menggabungkan keduanya — jadi Anda tidak perlu lompat-lompat.</p>
             </div>
           </Animate>
 
@@ -198,7 +198,7 @@ export default function Home() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#eaf7ff] text-[#1597e5]"><ListTodo className="h-5 w-5" /></div>
                   <h3 className="text-[17px] font-semibold">Catatan Tugas</h3>
                 </div>
-                <p className="text-[14px] text-[#64748b] leading-relaxed mb-5">Buat tugas, bagi jadi subtask, set prioritas & deadline. Kalau ada yang terlambat, langsung keliatan.</p>
+                <p className="text-[14px] text-[#64748b] leading-relaxed mb-5">Buat tugas, bagi menjadi subtask, atur prioritas & deadline. Kalau ada yang terlambat, langsung terlihat.</p>
               </div>
               <div className="mx-5 mb-5 rounded-[14px] border border-[#e2e8f0] bg-[#f8fafc] p-4">
                 <div className="space-y-2.5">
@@ -217,7 +217,7 @@ export default function Home() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#ecfdf5] text-[#10b981]"><Wallet className="h-5 w-5" /></div>
                   <h3 className="text-[17px] font-semibold">Keuangan Jelas</h3>
                 </div>
-                <p className="text-[14px] text-[#64748b] leading-relaxed mb-5">Pemasukan, pengeluaran, saldo — semua keliatan dalam satu pandangan.</p>
+                <p className="text-[14px] text-[#64748b] leading-relaxed mb-5">Pemasukan, pengeluaran, saldo — semuanya terlihat dalam satu pandangan.</p>
               </div>
               <div className="mx-5 mb-5 rounded-[14px] border border-[#e2e8f0] bg-[#f8fafc] p-4 space-y-2.5">
                 <MiniTx name="Gaji" amt="+Rp5.000.000" c="#10b981" />
@@ -230,7 +230,7 @@ export default function Home() {
             <Animate delay={0.12} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
               <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#fff7ed] text-[#f59e0b] mb-3"><Target className="h-5 w-5" /></div>
               <h3 className="text-[17px] font-semibold mb-1.5">Batas Anggaran</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed mb-4">Tetapin limit per kategori. Kalau udah mulai deket batas, Alflow kasih tau.</p>
+              <p className="text-[14px] text-[#64748b] leading-relaxed mb-4">Tetapkan limit per kategori. Kalau sudah mulai mendekati batas, Alflow akan memberi tahu.</p>
               <div className="rounded-[12px] border border-[#e2e8f0] bg-[#f8fafc] p-3.5">
                 <div className="flex items-center justify-between text-[13px] mb-1.5">
                   <span className="font-medium text-[#0f172a]">Makanan</span>
@@ -247,7 +247,7 @@ export default function Home() {
             <Animate delay={0.16} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
               <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#f0fdf4] text-[#10b981] mb-3"><PiggyBank className="h-5 w-5" /></div>
               <h3 className="text-[17px] font-semibold mb-1.5">Target Tabungan</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed mb-4">Bikin rencana nabung, set target & deadline. Progress bar-nya bikin termotivasi.</p>
+              <p className="text-[14px] text-[#64748b] leading-relaxed mb-4">Buat rencana nabung, atur target & deadline. Progress bar-nya membuat termotivasi.</p>
               <div className="rounded-[12px] border border-[#e2e8f0] bg-[#f8fafc] p-3.5">
                 <div className="flex items-center justify-between text-[13px] mb-1.5">
                   <span className="font-medium text-[#0f172a]">Dana Darurat</span>
@@ -264,14 +264,14 @@ export default function Home() {
             <Animate delay={0.2} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
               <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#faf5ff] text-[#8b5cf6] mb-3"><Repeat className="h-5 w-5" /></div>
               <h3 className="text-[17px] font-semibold mb-1.5">Transaksi Berulang</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed">Gaji bulanan, bayar kos, langganan — atur otomatis, ga perlu input manual tiap bulan.</p>
+              <p className="text-[14px] text-[#64748b] leading-relaxed">Gaji bulanan, bayar kos, langganan — atur otomatis, tidak perlu input manual setiap bulan.</p>
             </Animate>
 
             {/* Recap */}
             <Animate delay={0.24} className="rounded-[20px] border border-[#e2e8f0] bg-white p-6 hover:shadow-[0_16px_40px_rgba(15,23,42,.08)] transition-all hover:-translate-y-0.5">
               <div className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#eff6ff] text-[#3b82f6] mb-3"><PieChart className="h-5 w-5" /></div>
               <h3 className="text-[17px] font-semibold mb-1.5">Rekap Bulanan</h3>
-              <p className="text-[14px] text-[#64748b] leading-relaxed">Lihat pie chart pengeluaran per kategori. Tahu persis uangmu habis buat apa aja.</p>
+              <p className="text-[14px] text-[#64748b] leading-relaxed">Lihat pie chart pengeluaran per kategori. Tahu persis uang Anda habis untuk apa saja.</p>
             </Animate>
           </div>
         </div>
@@ -288,9 +288,9 @@ export default function Home() {
           </Animate>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-4xl mx-auto">
             {[
-              { n: "01", t: "Pilih cara masuk", d: "Daftar pakai email atau Google. Atau langsung coba sebagai tamu — ga perlu daftar." },
-              { n: "02", t: "Catat aktivitas", d: "Tambah tugas, catat transaksi, atau bikin rencana tabungan baru." },
-              { n: "03", t: "Atur batas", d: "Set budget per kategori dan deadline tiap tugas. Biar ada yang nge-push." },
+              { n: "01", t: "Pilih cara masuk", d: "Daftar menggunakan email atau Google. Atau langsung coba sebagai tamu — tanpa perlu mendaftar." },
+              { n: "02", t: "Catat aktivitas", d: "Tambah tugas, catat transaksi, atau buat rencana tabungan baru." },
+              { n: "03", t: "Atur batas", d: "Atur budget per kategori dan deadline setiap tugas. Agar ada yang mendorong." },
               { n: "04", t: "Pantau terus", d: "Cek rekap bulanan, lihat grafik, dan pastikan semuanya on track." },
             ].map((s, i) => (
               <Animate key={s.n} delay={i * 0.08}>
@@ -315,12 +315,12 @@ export default function Home() {
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
                 <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Task Management</p>
-                <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Tugas yang jelas,<br />ga perlu mikir dua kali.</h3>
+                <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Tugas yang jelas,<br />tanpa perlu berpikir dua kali.</h3>
                 <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
-                  Mulai dari yang kecil — "beli kopi" — sampai yang gede — "selesaiin proposal". Alflow bantu kamu urutin mana yang harus dikerjain dulu, mana yang bisa nunggu.
+                  Mulai dari yang kecil — "beli kopi" — sampai yang besar — "menyelesaikan proposal". Alflow membantu Anda mengurutkan mana yang harus dikerjakan terlebih dahulu, mana yang bisa menunggu.
                 </p>
                 <ul className="mt-5 space-y-2.5">
-                  {["Subtask buat pecah jadi bagian kecil", "Prioritas: rendah, sedang, tinggi", "Deadline yang keliatan jelas"].map(t => (
+                  {["Subtask untuk memecah menjadi bagian kecil", "Prioritas: rendah, sedang, tinggi", "Deadline yang terlihat jelas"].map(t => (
                     <li key={t} className="flex items-start gap-2 text-[14px] text-[#475569]">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#1597e5]" /> {t}
                     </li>
@@ -356,9 +356,9 @@ export default function Home() {
               </div>
               <div className="order-1 lg:order-2">
                 <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Personal Finance</p>
-                <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Uang masuk keluar,<br />semua keliatan.</h3>
+                <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Uang masuk dan keluar,<br />semuanya terlihat.</h3>
                 <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
-                  Ga perlu lagi nebak-nebak sisa saldo di akhir bulan. Catat tiap transaksi, pilih kategori yang pas, dan biarkan Alflow ngitung semuanya buat kamu.
+                  Tidak perlu lagi menebak-nebak sisa saldo di akhir bulan. Catat setiap transaksi, pilih kategori yang tepat, dan biarkan Alflow menghitung semuanya untuk Anda.
                 </p>
                 <ul className="mt-5 space-y-2.5">
                   {["Kategori: Makanan, Transport, Tagihan, dll.", "Pie chart distribusi pengeluaran", "Rekap per bulan yang bisa di-scroll"].map(t => (
@@ -376,9 +376,9 @@ export default function Home() {
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
                 <p className="text-[12px] font-semibold uppercase tracking-[.15em] text-[#1597e5] mb-3">Savings & Budget</p>
-                <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Nabung ada target,<br />belanja ada batas.</h3>
+                <h3 className="text-[24px] font-bold tracking-[-0.01em] sm:text-[30px] leading-[1.15]">Menabung ada target,<br />belanja ada batas.</h3>
                 <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
-                  Bikin rencana nabung buat liburan, dana darurat, atau gadget baru. Atur juga budget bulanan per kategori — biar ga kebablasan.
+                  Buat rencana nabung untuk liburan, dana darurat, atau gadget baru. Atur juga budget bulanan per kategori — agar tidak melebihi batas.
                 </p>
                 <div className="mt-5 space-y-3">
                   <BudgetBar cat="Makanan" used="Rp720K" total="Rp1Jt" pct={72} />
@@ -414,9 +414,9 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[24px] p-10 text-center sm:p-16" style={{ background: "linear-gradient(135deg, #65c4ff 0%, #1597e5 100%)" }}>
               <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full opacity-15 blur-3xl bg-white" />
               <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full opacity-10 blur-3xl bg-white" />
-              <h2 className="relative text-[28px] font-bold tracking-[-0.01em] text-white sm:text-[36px]">Siap bikin hidup lebih teratur?</h2>
+              <h2 className="relative text-[28px] font-bold tracking-[-0.01em] text-white sm:text-[36px]">Siap membuat hidup lebih teratur?</h2>
               <p className="relative mx-auto mt-4 max-w-lg text-[16px] text-white/80 leading-relaxed">
-                Mulai dari sekarang. Gratis, tanpa kartu kredit, dan bisa langsung dipake tanpa daftar.
+                Mulai dari sekarang. Gratis, tanpa kartu kredit, dan bisa langsung digunakan tanpa perlu mendaftar.
               </p>
               <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link href="/login" className="inline-flex items-center gap-2 rounded-[12px] bg-white px-7 py-3.5 text-[15px] font-semibold text-[#1597e5] hover:bg-white/90 transition-all" style={{ boxShadow: "0 8px 30px rgba(0,0,0,.1)" }}>

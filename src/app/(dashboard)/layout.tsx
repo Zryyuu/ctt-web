@@ -84,7 +84,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </header>
       {isGuest && (
         <div className="border-b border-[#fde68a] bg-[#fffbeb] px-4 py-2 text-center text-[13px] text-[#d97706]">
-          Mode Tamu — Data tersimpan di browser ini saja. <Link href="/login" className="font-medium underline">Login</Link> untuk sync ke cloud.
+          Mode Tamu — Data tersimpan di browser ini saja. <Link href="/login" className="font-medium underline">Login</Link> untuk menyinkronkan ke cloud.
         </div>
       )}
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">{children}</main>

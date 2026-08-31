@@ -53,7 +53,7 @@ export default function LoginPage() {
             </div>
           </Link>
           <h1 className="mt-4 text-2xl font-bold text-[#0f172a]">Masuk ke Alflow</h1>
-          <p className="mt-1 text-[14px] text-[#475569]">Atur tugas dan keuanganmu</p>
+          <p className="mt-1 text-[14px] text-[#475569]">Atur tugas dan keuangan Anda</p>
         </div>
         <div className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-card">
           {error && (
