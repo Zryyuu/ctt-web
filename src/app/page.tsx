@@ -419,7 +419,7 @@ export default function Home() {
       <section className="bg-[#f8fafc] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
-            <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+            <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
               <div>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-[#e2e8f0] bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#1597e5] mb-4">
                   <PiggyBank className="h-3 w-3" /> Tabungan &amp; Anggaran
@@ -428,42 +428,63 @@ export default function Home() {
                 <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
                   Buat rencana nabung untuk liburan, dana darurat, atau gadget baru. Atur juga budget bulanan per kategori — agar tidak melebihi batas.
                 </p>
-                <div className="mt-5 space-y-3">
-                  <BudgetBar cat="Makanan" used="Rp720K" total="Rp1Jt" pct={72} />
-                  <BudgetBar cat="Transport" used="Rp350K" total="Rp500K" pct={70} />
-                  <BudgetBar cat="Hiburan" used="Rp120K" total="Rp300K" pct={40} />
-                </div>
+                <ul className="mt-5 space-y-3">
+                  {["Target nabung dengan deadline", "Budget per kategori: Makanan, Transport, dll.", "Peringatan saat mendekati batas"].map(t => (
+                    <li key={t} className="flex items-start gap-2.5 text-[14px] text-[#475569]">
+                      <div className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#eaf7ff]"><CheckCircle2 className="h-3 w-3 text-[#1597e5]" /></div>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
-                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#e2e8f0]/60">
-                  <div className="h-2 w-2 rounded-full bg-[#10b981]" />
-                  <span className="ml-auto text-[11px] text-[#94a3b8]">2 rencana aktif</span>
-                </div>
-                <div className="rounded-[14px] border border-[#e2e8f0] bg-[#f8fafc] p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <p className="text-[15px] font-semibold text-[#0f172a]">Dana Darurat</p>
-                      <p className="text-[13px] text-[#94a3b8]">Target Rp10.000.000</p>
+              <div className="space-y-4">
+                {/* savings plan 1 */}
+                <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-[#eaf7ff] text-[#1597e5]"><PiggyBank className="h-4 w-4" /></div>
+                      <div>
+                        <p className="text-[14px] font-semibold text-[#0f172a]">Dana Darurat</p>
+                        <p className="text-[12px] text-[#94a3b8]">Target Rp10.000.000</p>
+                      </div>
                     </div>
                     <span className="rounded-[8px] bg-[#eaf7ff] px-2.5 py-1 text-[12px] font-bold text-[#1597e5]">65%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-[#e2e8f0] overflow-hidden">
+                  <div className="h-2 rounded-full bg-[#e2e8f0] overflow-hidden mb-2">
                     <div className="h-full rounded-full bg-[#1597e5]" style={{ width: "65%" }} />
                   </div>
-                  <p className="text-[12px] text-[#94a3b8] mt-2">45 hari lagi · Rp72.222/hari</p>
+                  <div className="flex items-center justify-between text-[12px] text-[#94a3b8]">
+                    <span>Tersisa Rp3.500.000</span>
+                    <span>45 hari lagi</span>
+                  </div>
                 </div>
-                <div className="rounded-[14px] border border-[#e2e8f0] bg-[#f8fafc] p-4 mt-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <p className="text-[15px] font-semibold text-[#0f172a]">Gadget Baru</p>
-                      <p className="text-[13px] text-[#94a3b8]">Target Rp5.000.000</p>
+                {/* savings plan 2 */}
+                <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-[#ecfdf5] text-[#10b981]"><Target className="h-4 w-4" /></div>
+                      <div>
+                        <p className="text-[14px] font-semibold text-[#0f172a]">Gadget Baru</p>
+                        <p className="text-[12px] text-[#94a3b8]">Target Rp5.000.000</p>
+                      </div>
                     </div>
                     <span className="rounded-[8px] bg-[#ecfdf5] px-2.5 py-1 text-[12px] font-bold text-[#10b981]">30%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-[#e2e8f0] overflow-hidden">
+                  <div className="h-2 rounded-full bg-[#e2e8f0] overflow-hidden mb-2">
                     <div className="h-full rounded-full bg-[#10b981]" style={{ width: "30%" }} />
                   </div>
-                  <p className="text-[12px] text-[#94a3b8] mt-2">90 hari lagi · Rp55.555/hari</p>
+                  <div className="flex items-center justify-between text-[12px] text-[#94a3b8]">
+                    <span>Tersisa Rp3.500.000</span>
+                    <span>90 hari lagi</span>
+                  </div>
+                </div>
+                {/* budget limits mini */}
+                <div className="rounded-[20px] border border-[#e2e8f0] bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,.06)]">
+                  <p className="text-[12px] font-semibold uppercase tracking-wider text-[#94a3b8] mb-3">Batas Anggaran</p>
+                  <div className="space-y-3">
+                    <BudgetBar cat="Makanan" used="Rp720K" total="Rp1Jt" pct={72} />
+                    <BudgetBar cat="Transport" used="Rp350K" total="Rp500K" pct={70} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -662,13 +683,13 @@ function TaskItemDark({ text, p, state }: { text: string; p: string; state: "act
 function BudgetBar({ cat, used, total, pct }: { cat: string; used: string; total: string; pct: number }) {
   const c = pct >= 90 ? "#ef4444" : pct >= 75 ? "#f59e0b" : "#1597e5";
   return (
-    <div className="rounded-[12px] border border-[#e2e8f0] bg-white p-3.5">
+    <div>
       <div className="flex items-center justify-between text-[13px] mb-1.5">
         <span className="font-medium text-[#0f172a]">{cat}</span>
         <span className="font-semibold tabular-nums" style={{ color: c }}>{pct}%</span>
       </div>
       <div className="h-1.5 rounded-full bg-[#e2e8f0] overflow-hidden"><div className="h-full rounded-full" style={{ width: `${pct}%`, background: c }} /></div>
-      <p className="text-[12px] text-[#94a3b8] mt-1.5">{used} / {total}</p>
+      <p className="text-[12px] text-[#94a3b8] mt-1">{used} / {total}</p>
     </div>
   );
 }
