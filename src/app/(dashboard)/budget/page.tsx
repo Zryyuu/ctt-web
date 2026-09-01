@@ -19,7 +19,7 @@ import {
 const CATEGORIES = ["Makanan", "Transport", "Belanja", "Hiburan", "Tagihan", "Kesehatan", "Pendidikan", "Lainnya"];
 const INCOME_CATEGORIES = ["Gaji", "Investasi", "Tambahan", "Lainnya"];
 
-const CHART_COLORS = ["#4f46e5", "#ef4444", "#22c55e", "#f59e0b", "#8b5cf6", "#06b6d4", "#ec4899", "#14b8a6", "#f97316", "#6366f1"];
+const CHART_COLORS = ["#1597e5", "#ef4444", "#22c55e", "#f59e0b", "#8b5cf6", "#06b6d4", "#ec4899", "#14b8a6", "#f97316", "#6366f1"];
 
 const ICONS = ["savings", "home", "car", "flight", "phone", "laptop", "school", "medical"];
 const ICON_MAP: Record<string, string> = { savings: "🏦", home: "🏠", car: "🚗", flight: "✈️", phone: "📱", laptop: "💻", school: "🎓", medical: "🏥" };
@@ -142,39 +142,45 @@ export default function BudgetPage() {
   const currentLimits = budgetLimits.filter((b) => b.month === currentMonthStr);
 
   if (loading) {
-    return <div className="flex h-64 items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent" /></div>;
+    return <div className="flex h-64 items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-[#1597e5] border-t-transparent" /></div>;
   }
 
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Keuangan</h1>
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Keuangan</h1>
+          <p className="text-sm text-gray-500">{formatMonthYear(new Date())} · Kelola pemasukan, pengeluaran, dan tabungan Anda</p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border bg-white p-4 shadow-sm">
+        <div className="relative overflow-hidden rounded-xl border bg-white p-4 shadow-card">
+          <div className="absolute right-0 top-0 h-14 w-14 rounded-full bg-green-100/50 blur-xl" />
           <div className="flex items-center gap-3">
             <div className="rounded-lg bg-green-50 p-2"><TrendingUp className="h-5 w-5 text-green-500" /></div>
             <div><p className="text-xs text-gray-500">Pemasukan</p><p className="text-lg font-bold text-green-600">{formatCurrency(totalIncome)}</p></div>
           </div>
         </div>
-        <div className="rounded-xl border bg-white p-4 shadow-sm">
+        <div className="relative overflow-hidden rounded-xl border bg-white p-4 shadow-card">
+          <div className="absolute right-0 top-0 h-14 w-14 rounded-full bg-red-100/50 blur-xl" />
           <div className="flex items-center gap-3">
             <div className="rounded-lg bg-red-50 p-2"><TrendingDown className="h-5 w-5 text-red-500" /></div>
             <div><p className="text-xs text-gray-500">Pengeluaran</p><p className="text-lg font-bold text-red-600">{formatCurrency(totalExpense)}</p></div>
           </div>
         </div>
-        <div className="rounded-xl border bg-white p-4 shadow-sm">
+        <div className="relative overflow-hidden rounded-xl border bg-white p-4 shadow-card">
+          <div className="absolute right-0 top-0 h-14 w-14 rounded-full bg-[#eaf7ff] blur-xl" />
           <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-indigo-50 p-2"><Wallet className="h-5 w-5 text-indigo-500" /></div>
-            <div><p className="text-xs text-gray-500">Saldo</p><p className={`text-lg font-bold ${balance >= 0 ? "text-indigo-600" : "text-red-600"}`}>{formatCurrency(balance)}</p></div>
+            <div className="rounded-lg bg-[#eaf7ff] p-2"><Wallet className="h-5 w-5 text-[#1597e5]" /></div>
+            <div><p className="text-xs text-gray-500">Saldo</p><p className={`text-lg font-bold ${balance >= 0 ? "text-[#1597e5]" : "text-red-600"}`}>{formatCurrency(balance)}</p></div>
           </div>
         </div>
       </div>
 
       <div className="flex rounded-lg border bg-white p-1 shadow-sm">
         {([["transactions", "Transaksi"], ["savings", "Menabung"], ["recap", "Rekap"], ["anggaran", "Anggaran"]] as const).map(([key, label]) => (
-          <button key={key} onClick={() => setTab(key)} className={`flex-1 rounded-md py-2 text-sm font-medium transition-colors ${tab === key ? "bg-indigo-600 text-white" : "text-gray-600 hover:bg-gray-100"}`}>
+          <button key={key} onClick={() => setTab(key)} className={`flex-1 rounded-md py-2 text-sm font-medium transition-colors ${tab === key ? "bg-[#1597e5] text-white" : "text-gray-600 hover:bg-gray-100"}`}>
             {label}
           </button>
         ))}
@@ -205,9 +211,9 @@ function RecurringSection({ recurring, onExecute, onDelete }: { recurring: Recur
   const active = recurring.filter((r) => r.isActive);
   if (active.length === 0) return null;
   return (
-    <div className="rounded-xl border bg-indigo-50 p-4 shadow-sm">
+    <div className="rounded-xl border bg-[#eaf7ff] p-4 shadow-sm">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="flex items-center gap-2 text-sm font-bold text-indigo-900"><Repeat className="h-4 w-4" /> Transaksi Berulang</h2>
+        <h2 className="flex items-center gap-2 text-sm font-bold text-[#0f172a]"><Repeat className="h-4 w-4" /> Transaksi Berulang</h2>
       </div>
       <div className="space-y-2">
         {active.map((rt) => (
@@ -220,7 +226,7 @@ function RecurringSection({ recurring, onExecute, onDelete }: { recurring: Recur
               <span className={`text-sm font-bold ${rt.isIncome ? "text-green-600" : "text-red-600"}`}>
                 {rt.isIncome ? "+" : "-"}{formatCurrency(rt.amount)}
               </span>
-              <button onClick={() => onExecute(rt.id)} className="rounded bg-indigo-600 px-2 py-1 text-[10px] font-medium text-white hover:bg-indigo-700">Buat</button>
+              <button onClick={() => onExecute(rt.id)} className="rounded bg-[#1597e5] px-2 py-1 text-[10px] font-medium text-white hover:bg-[#1285cc]">Buat</button>
               <button onClick={() => onDelete(rt.id)} className="rounded-lg p-1 text-gray-400 hover:bg-red-50 hover:text-red-500"><Trash2 className="h-3 w-3" /></button>
             </div>
           </div>
@@ -239,10 +245,10 @@ function TransactionsTab({ transactions, onAdd, onDelete, onAddRecurring }: { tr
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">{transactions.length} transaksi</p>
         <div className="flex gap-2">
-          <button onClick={() => setShowRecurring(true)} className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
+          <button onClick={() => setShowRecurring(true)} className="flex items-center gap-2 rounded-lg bg-[#1597e5] px-4 py-2 text-sm font-medium text-white hover:bg-[#1285cc] transition-colors">
             <Repeat className="h-4 w-4" /> Berulang
           </button>
-          <button onClick={() => setShowAdd(true)} className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
+          <button onClick={() => setShowAdd(true)} className="flex items-center gap-2 rounded-lg bg-[#1597e5] px-4 py-2 text-sm font-medium text-white hover:bg-[#1285cc] transition-colors">
             <Plus className="h-4 w-4" /> Tambah
           </button>
         </div>
@@ -308,21 +314,21 @@ function AddTransactionDialog({ onAdd, onClose }: { onAdd: (t: Transaction) => v
             <button type="button" onClick={() => setIsIncome(false)} className={`flex-1 rounded-lg border-2 py-2 text-sm font-medium transition-colors ${!isIncome ? "border-red-400 bg-red-50 text-red-700" : "border-gray-200 text-gray-500 hover:bg-gray-50"}`}>Pengeluaran</button>
             <button type="button" onClick={() => setIsIncome(true)} className={`flex-1 rounded-lg border-2 py-2 text-sm font-medium transition-colors ${isIncome ? "border-green-400 bg-green-50 text-green-700" : "border-gray-200 text-gray-500 hover:bg-gray-50"}`}>Pemasukan</button>
           </div>
-          <input autoFocus value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Judul transaksi" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" required />
+          <input autoFocus value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Judul transaksi" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" required />
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">Rp</span>
-            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="0" className="w-full rounded-lg border py-2.5 pl-10 pr-3 text-sm focus:border-indigo-500 focus:outline-none" required min="1" />
+            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="0" className="w-full rounded-lg border py-2.5 pl-10 pr-3 text-sm focus:border-[#1597e5] focus:outline-none" required min="1" />
           </div>
           <div className="grid grid-cols-2 gap-2">
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none">
+            <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none">
               {(isIncome ? INCOME_CATEGORIES : CATEGORIES).map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
           </div>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" />
-          <input value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Catatan (opsional)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" />
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" />
+          <input value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Catatan (opsional)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" />
           <div className="flex gap-3 pt-2">
             <button type="button" onClick={onClose} className="flex-1 rounded-lg border py-2.5 text-sm font-medium hover:bg-gray-50">Batal</button>
-            <button type="submit" className="flex-1 rounded-lg bg-indigo-600 py-2.5 text-sm font-medium text-white hover:bg-indigo-700">Tambah</button>
+            <button type="submit" className="flex-1 rounded-lg bg-[#1597e5] py-2.5 text-sm font-medium text-white hover:bg-[#1285cc]">Tambah</button>
           </div>
         </form>
       </div>
@@ -364,28 +370,28 @@ function AddRecurringDialog({ onAdd, onClose }: { onAdd: (rt: RecurringTransacti
             <button type="button" onClick={() => setIsIncome(false)} className={`flex-1 rounded-lg border-2 py-2 text-sm font-medium transition-colors ${!isIncome ? "border-red-400 bg-red-50 text-red-700" : "border-gray-200 text-gray-500 hover:bg-gray-50"}`}>Pengeluaran</button>
             <button type="button" onClick={() => setIsIncome(true)} className={`flex-1 rounded-lg border-2 py-2 text-sm font-medium transition-colors ${isIncome ? "border-green-400 bg-green-50 text-green-700" : "border-gray-200 text-gray-500 hover:bg-gray-50"}`}>Pemasukan</button>
           </div>
-          <input autoFocus value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Judul (contoh: Gaji, Bayar kos)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" required />
+          <input autoFocus value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Judul (contoh: Gaji, Bayar kos)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" required />
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">Rp</span>
-            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="0" className="w-full rounded-lg border py-2.5 pl-10 pr-3 text-sm focus:border-indigo-500 focus:outline-none" required min="1" />
+            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="0" className="w-full rounded-lg border py-2.5 pl-10 pr-3 text-sm focus:border-[#1597e5] focus:outline-none" required min="1" />
           </div>
-          <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none">
+          <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none">
             {(isIncome ? INCOME_CATEGORIES : CATEGORIES).map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
           <div>
             <p className="mb-2 text-xs font-medium text-gray-500">Frekuensi</p>
             <div className="grid grid-cols-4 gap-2">
               {(["daily", "weekly", "monthly", "yearly"] as const).map((f) => (
-                <button key={f} type="button" onClick={() => setFrequency(f)} className={`rounded-lg border py-2 text-xs font-medium transition-colors ${frequency === f ? "border-indigo-400 bg-indigo-50 text-indigo-700" : "border-gray-200 text-gray-500 hover:bg-gray-50"}`}>
+                <button key={f} type="button" onClick={() => setFrequency(f)} className={`rounded-lg border py-2 text-xs font-medium transition-colors ${frequency === f ? "border-[#1597e5] bg-[#eaf7ff] text-[#1597e5]" : "border-gray-200 text-gray-500 hover:bg-gray-50"}`}>
                   {FREQUENCY_LABELS[f]}
                 </button>
               ))}
             </div>
           </div>
-          <input value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Catatan (opsional)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" />
+          <input value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Catatan (opsional)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" />
           <div className="flex gap-3 pt-2">
             <button type="button" onClick={onClose} className="flex-1 rounded-lg border py-2.5 text-sm font-medium hover:bg-gray-50">Batal</button>
-            <button type="submit" className="flex-1 rounded-lg bg-indigo-600 py-2.5 text-sm font-medium text-white hover:bg-indigo-700">Buat</button>
+            <button type="submit" className="flex-1 rounded-lg bg-[#1597e5] py-2.5 text-sm font-medium text-white hover:bg-[#1285cc]">Buat</button>
           </div>
         </form>
       </div>
@@ -405,7 +411,7 @@ function SavingsTab({ plans, txs, onAddPlan, onDeletePlan, onAdd }: {
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">{plans.length} rencana</p>
-        <button onClick={() => setShowAdd(true)} className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+        <button onClick={() => setShowAdd(true)} className="flex items-center gap-2 rounded-lg bg-[#1597e5] px-4 py-2 text-sm font-medium text-white hover:bg-[#1285cc]">
           <Plus className="h-4 w-4" /> Rencana Baru
         </button>
       </div>
@@ -438,19 +444,19 @@ function SavingsTab({ plans, txs, onAddPlan, onDeletePlan, onAdd }: {
                       <p className="text-sm text-gray-500">{formatCurrency(plan.currentAmount)} / {formatCurrency(plan.targetAmount)}</p>
                     </div>
                   </div>
-                  <span className="rounded-lg bg-indigo-100 px-2 py-1 text-xs font-bold text-indigo-700">{progress.toFixed(1)}%</span>
+                  <span className="rounded-lg bg-[#e8f6ff] px-2 py-1 text-xs font-bold text-[#1597e5]">{progress.toFixed(1)}%</span>
                 </div>
                 <div className="mt-3 h-2 overflow-hidden rounded-full bg-gray-200">
-                  <div className="h-full rounded-full bg-indigo-500 transition-all" style={{ width: `${Math.min(progress, 100)}%` }} />
+                  <div className="h-full rounded-full bg-[#eaf7ff]0 transition-all" style={{ width: `${Math.min(progress, 100)}%` }} />
                 </div>
                 <div className="mt-2 flex items-center justify-between text-xs text-gray-400">
                   <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> Target: {formatDate(new Date(plan.targetDate))}</span>
                   {daysLeft > 0 && <span>{daysLeft} hari lagi</span>}
                 </div>
-                {!plan.isCompleted && remaining > 0 && <p className="mt-1 text-xs text-indigo-600">Per hari: {formatCurrency(daily)}</p>}
+                {!plan.isCompleted && remaining > 0 && <p className="mt-1 text-xs text-[#1597e5]">Per hari: {formatCurrency(daily)}</p>}
                 <div className="mt-3 flex gap-2">
                   {!plan.isCompleted && (
-                    <button onClick={() => setAddToPlanId(addToPlanId === plan.id ? null : plan.id)} className="flex-1 rounded-lg bg-indigo-600 py-2 text-xs font-medium text-white hover:bg-indigo-700">+ Tabung</button>
+                    <button onClick={() => setAddToPlanId(addToPlanId === plan.id ? null : plan.id)} className="flex-1 rounded-lg bg-[#1597e5] py-2 text-xs font-medium text-white hover:bg-[#1285cc]">+ Tabung</button>
                   )}
                   <button onClick={() => onDeletePlan(plan.id)} className="rounded-lg border px-3 py-2 text-xs text-red-500 hover:bg-red-50"><Trash2 className="h-4 w-4" /></button>
                 </div>
@@ -483,9 +489,9 @@ function AddToSavingsInline({ onAdd }: { onAdd: (amount: number, notes: string) 
     <div className="mt-3 rounded-lg bg-gray-50 p-3 space-y-2">
       <div className="relative">
         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">Rp</span>
-        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Jumlah" className="w-full rounded-lg border py-2 pl-8 pr-3 text-sm focus:border-indigo-500 focus:outline-none" min="1" />
+        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Jumlah" className="w-full rounded-lg border py-2 pl-8 pr-3 text-sm focus:border-[#1597e5] focus:outline-none" min="1" />
       </div>
-      <input value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Catatan" className="w-full rounded-lg border px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none" />
+      <input value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Catatan" className="w-full rounded-lg border px-3 py-2 text-sm focus:border-[#1597e5] focus:outline-none" />
       <button onClick={() => { const a = parseFloat(amount); if (a > 0) onAdd(a, notes); }} className="w-full rounded-lg bg-green-600 py-2 text-xs font-medium text-white hover:bg-green-700">Simpan</button>
     </div>
   );
@@ -503,7 +509,7 @@ function AddSavingsPlanDialog({ onAdd, onClose }: { onAdd: (p: SavingsPlan) => v
     if (!name.trim() || !target) return;
     const t = parseFloat(target);
     if (isNaN(t) || t <= 0) return;
-    onAdd({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: name.trim(), targetAmount: t, currentAmount: 0, targetDate: new Date(targetDate).toISOString(), description: desc, icon, color: "#4f46e5", isCompleted: false });
+    onAdd({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: name.trim(), targetAmount: t, currentAmount: 0, targetDate: new Date(targetDate).toISOString(), description: desc, icon, color: "#1597e5", isCompleted: false });
   };
 
   return (
@@ -511,15 +517,15 @@ function AddSavingsPlanDialog({ onAdd, onClose }: { onAdd: (p: SavingsPlan) => v
       <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
         <h2 className="mb-4 text-lg font-bold">Rencana Menabung Baru</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="Nama rencana" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" required />
+          <input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="Nama rencana" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" required />
           <div className="relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">Rp</span>
-            <input type="number" value={target} onChange={(e) => setTarget(e.target.value)} placeholder="Target jumlah" className="w-full rounded-lg border py-2.5 pl-10 pr-3 text-sm focus:border-indigo-500 focus:outline-none" required min="1" />
+            <input type="number" value={target} onChange={(e) => setTarget(e.target.value)} placeholder="Target jumlah" className="w-full rounded-lg border py-2.5 pl-10 pr-3 text-sm focus:border-[#1597e5] focus:outline-none" required min="1" />
           </div>
-          <input type="date" value={targetDate} onChange={(e) => setTargetDate(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" />
-          <input value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Deskripsi (opsional)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none" />
-          <div><p className="mb-2 text-xs font-medium text-gray-500">Icon</p><div className="flex gap-2">{ICONS.map((ic) => <button key={ic} type="button" onClick={() => setIcon(ic)} className={`rounded-lg border-2 p-2 text-lg ${icon === ic ? "border-indigo-400 bg-indigo-50" : "border-gray-200"}`}>{ICON_MAP[ic]}</button>)}</div></div>
-          <div className="flex gap-3 pt-2"><button type="button" onClick={onClose} className="flex-1 rounded-lg border py-2.5 text-sm font-medium hover:bg-gray-50">Batal</button><button type="submit" className="flex-1 rounded-lg bg-indigo-600 py-2.5 text-sm font-medium text-white hover:bg-indigo-700">Buat</button></div>
+          <input type="date" value={targetDate} onChange={(e) => setTargetDate(e.target.value)} className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" />
+          <input value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Deskripsi (opsional)" className="w-full rounded-lg border px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none" />
+          <div><p className="mb-2 text-xs font-medium text-gray-500">Icon</p><div className="flex gap-2">{ICONS.map((ic) => <button key={ic} type="button" onClick={() => setIcon(ic)} className={`rounded-lg border-2 p-2 text-lg ${icon === ic ? "border-[#1597e5] bg-[#eaf7ff]" : "border-gray-200"}`}>{ICON_MAP[ic]}</button>)}</div></div>
+          <div className="flex gap-3 pt-2"><button type="button" onClick={onClose} className="flex-1 rounded-lg border py-2.5 text-sm font-medium hover:bg-gray-50">Batal</button><button type="submit" className="flex-1 rounded-lg bg-[#1597e5] py-2.5 text-sm font-medium text-white hover:bg-[#1285cc]">Buat</button></div>
         </form>
       </div>
     </div>
@@ -606,12 +612,12 @@ function PieChartCategory({ categories }: { categories: [string, number][] }) {
   if (total === 0) return null;
 
   let offset = 0;
-  const slices = categories.map(([cat, val]) => {
+  const slices = categories.map(([cat, val], idx) => {
     const pct = Math.abs(val) / total;
     const angle = pct * 360;
     const startOffset = offset;
     offset += angle;
-    const color = CHART_COLORS[categories.indexOf([cat, val]) % CHART_COLORS.length];
+    const color = CHART_COLORS[idx % CHART_COLORS.length];
     return { cat, val, pct, angle, color, startOffset };
   });
 
@@ -670,7 +676,7 @@ function BarChartSimple({ income, expense }: { income: number; expense: number }
         <div className="h-4 overflow-hidden rounded-full bg-gray-100"><div className="h-full rounded-full bg-red-500 transition-all" style={{ width: `${expenseH}%` }} /></div>
       </div>
       {income > 0 && expense > 0 && (
-        <div className="rounded-lg bg-indigo-50 p-2 text-center text-xs font-medium text-indigo-700">
+        <div className="rounded-lg bg-[#eaf7ff] p-2 text-center text-xs font-medium text-[#1597e5]">
           Selisih: {formatCurrency(income - expense)} {income >= expense ? "😊" : "⚠️"}
         </div>
       )}
@@ -698,7 +704,7 @@ function BudgetTab({ limits, onAdd, onDelete, expenseByCategory, month }: {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="flex items-center gap-2 text-lg font-bold text-gray-900"><Target className="h-5 w-5" /> Batas Anggaran Bulan Ini</h2>
-        <button onClick={() => setShowAdd(true)} className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">
+        <button onClick={() => setShowAdd(true)} className="flex items-center gap-2 rounded-lg bg-[#1597e5] px-4 py-2 text-sm font-medium text-white hover:bg-[#1285cc]">
           <Plus className="h-4 w-4" /> Tambah
         </button>
       </div>
@@ -725,12 +731,12 @@ function BudgetTab({ limits, onAdd, onDelete, expenseByCategory, month }: {
                     <p className="text-xs text-gray-500">{formatCurrency(spent)} / {formatCurrency(bl.amount)}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    {over ? <span className="rounded-full bg-red-100 px-2 py-0.5 text-[10px] font-bold text-red-700">LEBIH</span> : <span className="rounded-lg bg-indigo-100 px-2 py-1 text-xs font-bold text-indigo-700">{progress.toFixed(0)}%</span>}
+                    {over ? <span className="rounded-full bg-red-100 px-2 py-0.5 text-[10px] font-bold text-red-700">LEBIH</span> : <span className="rounded-lg bg-[#e8f6ff] px-2 py-1 text-xs font-bold text-[#1597e5]">{progress.toFixed(0)}%</span>}
                     <button onClick={() => onDelete(bl.id)} className="rounded-lg p-1 text-gray-400 hover:bg-red-50 hover:text-red-500"><Trash2 className="h-3 w-3" /></button>
                   </div>
                 </div>
                 <div className="mt-2 h-2 overflow-hidden rounded-full bg-gray-200">
-                  <div className={`h-full rounded-full transition-all ${over ? "bg-red-500" : progress > 80 ? "bg-yellow-500" : "bg-indigo-500"}`} style={{ width: `${Math.min(progress, 100)}%` }} />
+                  <div className={`h-full rounded-full transition-all ${over ? "bg-red-500" : progress > 80 ? "bg-yellow-500" : "bg-[#eaf7ff]0"}`} style={{ width: `${Math.min(progress, 100)}%` }} />
                 </div>
                 <div className="mt-1 text-xs text-gray-400">{over ? `Lebih ${formatCurrency(Math.abs(remaining))}` : `Sisa ${formatCurrency(remaining)}`}</div>
               </div>
@@ -743,16 +749,16 @@ function BudgetTab({ limits, onAdd, onDelete, expenseByCategory, month }: {
         <form onSubmit={handleAdd} className="rounded-xl border bg-white p-4 shadow-sm space-y-3">
           <h3 className="text-sm font-bold text-gray-900">Batas Anggaran Baru</h3>
           <div className="grid grid-cols-2 gap-2">
-            <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="rounded-lg border px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none">
+            <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="rounded-lg border px-3 py-2 text-sm focus:border-[#1597e5] focus:outline-none">
               {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">Rp</span>
-              <input type="number" value={limitAmount} onChange={(e) => setLimitAmount(e.target.value)} placeholder="Batas" className="w-full rounded-lg border py-2 pl-8 pr-3 text-sm focus:border-indigo-500 focus:outline-none" required min="1" />
+              <input type="number" value={limitAmount} onChange={(e) => setLimitAmount(e.target.value)} placeholder="Batas" className="w-full rounded-lg border py-2 pl-8 pr-3 text-sm focus:border-[#1597e5] focus:outline-none" required min="1" />
             </div>
           </div>
           <div className="flex gap-2">
-            <button type="submit" className="flex-1 rounded-lg bg-indigo-600 py-2 text-sm font-medium text-white hover:bg-indigo-700">Simpan</button>
+            <button type="submit" className="flex-1 rounded-lg bg-[#1597e5] py-2 text-sm font-medium text-white hover:bg-[#1285cc]">Simpan</button>
             <button type="button" onClick={() => setShowAdd(false)} className="flex-1 rounded-lg border py-2 text-sm font-medium hover:bg-gray-50">Batal</button>
           </div>
         </form>

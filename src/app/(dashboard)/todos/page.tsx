@@ -98,7 +98,7 @@ export default function TodosPage() {
   if (loading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-indigo-500 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#1597e5] border-t-transparent" />
       </div>
     );
   }
@@ -110,16 +110,43 @@ export default function TodosPage() {
           <h1 className="text-2xl font-bold text-gray-900">Tugas</h1>
           <p className="text-sm text-gray-500">
             {activeCount} aktif, {doneCount} selesai
-            {saving && <span className="ml-2 text-indigo-500">Menyimpan...</span>}
+            {saving && <span className="ml-2 text-[#1597e5]">Menyimpan...</span>}
           </p>
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
+          className="flex items-center gap-2 rounded-lg bg-[#1597e5] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#1285cc] transition-colors"
         >
           <Plus className="h-4 w-4" /> Tambah Tugas
         </button>
       </div>
+
+      {todos.length > 0 && (
+        <div className="rounded-xl border border-[#d3efff] bg-[#eaf7ff] p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1597e5] text-white shadow-blue">
+                <CheckCircle2 className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-[#0f172a]">Progres Tugas</p>
+                <p className="text-xs text-[#64748b]">
+                  {doneCount} dari {todos.length} selesai
+                </p>
+              </div>
+            </div>
+            <span className="rounded-lg bg-white px-3 py-1.5 text-sm font-bold text-[#1597e5]">
+              {Math.round((doneCount / todos.length) * 100)}%
+            </span>
+          </div>
+          <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-white">
+            <div
+              className="h-full rounded-full transition-all duration-500"
+              style={{ width: `${(doneCount / todos.length) * 100}%`, background: "linear-gradient(90deg, #65c4ff, #1597e5)" }}
+            />
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <div className="relative flex-1">
@@ -129,7 +156,7 @@ export default function TodosPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Cari tugas..."
-            className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-sm focus:border-[#1597e5] focus:outline-none focus:ring-1 focus:ring-[#1597e5]"
           />
         </div>
         <div className="flex gap-2">
@@ -139,7 +166,7 @@ export default function TodosPage() {
                 key={f}
                 onClick={() => setFilter(f)}
                 className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-                  filter === f ? "bg-indigo-600 text-white" : "text-gray-600 hover:bg-gray-100"
+                  filter === f ? "bg-[#1597e5] text-white" : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
                 {f === "all" ? "Semua" : f === "active" ? "Aktif" : "Selesai"}
@@ -149,7 +176,7 @@ export default function TodosPage() {
           <select
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 focus:border-indigo-500 focus:outline-none"
+            className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-600 focus:border-[#1597e5] focus:outline-none"
           >
             <option value="all">Semua Prioritas</option>
             {PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}
@@ -233,7 +260,7 @@ function TodoCard({
           {todo.isCompleted ? (
             <CheckCircle2 className="h-5 w-5 text-green-500" />
           ) : (
-            <Circle className="h-5 w-5 text-gray-300 hover:text-indigo-500" />
+            <Circle className="h-5 w-5 text-gray-300 hover:text-[#1597e5]" />
           )}
         </button>
         <div className="min-w-0 flex-1">
@@ -286,7 +313,7 @@ function TodoCard({
               onChange={(e) => setNotes(e.target.value)}
               onBlur={() => onUpdateNotes(notes)}
               placeholder="Tambah catatan..."
-              className="w-full rounded-lg border border-gray-200 p-2 text-sm focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-200 p-2 text-sm focus:border-[#1597e5] focus:outline-none"
               rows={2}
             />
           </div>
@@ -307,7 +334,7 @@ function TodoCard({
                       onChange={(e) => setEditSubText(e.target.value)}
                       onBlur={() => { if (editSubText.trim()) onEditSubtask(s.id, { task: editSubText.trim() }); setEditSubId(null); }}
                       onKeyDown={(e) => { if (e.key === "Enter") { if (editSubText.trim()) onEditSubtask(s.id, { task: editSubText.trim() }); setEditSubId(null); }}}
-                      className="flex-1 rounded border border-indigo-300 px-2 py-0.5 text-sm focus:outline-none"
+                      className="flex-1 rounded border border-[#1597e5] px-2 py-0.5 text-sm focus:outline-none"
                     />
                   ) : (
                     <span
@@ -329,9 +356,9 @@ function TodoCard({
                 onChange={(e) => setNewSub(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && addSubtask()}
                 placeholder="Tambah subtask..."
-                className="flex-1 rounded-lg border border-gray-200 px-3 py-1.5 text-sm focus:border-indigo-500 focus:outline-none"
+                className="flex-1 rounded-lg border border-gray-200 px-3 py-1.5 text-sm focus:border-[#1597e5] focus:outline-none"
               />
-              <button onClick={addSubtask} className="rounded-lg bg-indigo-100 px-3 py-1.5 text-xs font-medium text-indigo-700 hover:bg-indigo-200">
+              <button onClick={addSubtask} className="rounded-lg bg-[#e8f6ff] px-3 py-1.5 text-xs font-medium text-[#1597e5] hover:bg-[#d3efff]">
                 Tambah
               </button>
             </div>
@@ -374,7 +401,7 @@ function AddTodoDialog({ onAdd, onClose }: { onAdd: (t: TodoItem) => void; onClo
               autoFocus
               value={task}
               onChange={(e) => setTask(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none focus:ring-1 focus:ring-[#1597e5]"
               placeholder="Masukkan judul tugas..."
               required
             />
@@ -385,7 +412,7 @@ function AddTodoDialog({ onAdd, onClose }: { onAdd: (t: TodoItem) => void; onClo
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none"
               >
                 {PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}
               </select>
@@ -396,7 +423,7 @@ function AddTodoDialog({ onAdd, onClose }: { onAdd: (t: TodoItem) => void; onClo
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-[#1597e5] focus:outline-none"
               />
             </div>
           </div>
@@ -405,7 +432,7 @@ function AddTodoDialog({ onAdd, onClose }: { onAdd: (t: TodoItem) => void; onClo
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-[#1597e5] focus:outline-none"
               placeholder="Catatan opsional..."
               rows={2}
             />
@@ -414,7 +441,7 @@ function AddTodoDialog({ onAdd, onClose }: { onAdd: (t: TodoItem) => void; onClo
             <button type="button" onClick={onClose} className="flex-1 rounded-lg border border-gray-300 py-2.5 text-sm font-medium hover:bg-gray-50 transition-colors">
               Batal
             </button>
-            <button type="submit" className="flex-1 rounded-lg bg-indigo-600 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
+            <button type="submit" className="flex-1 rounded-lg bg-[#1597e5] py-2.5 text-sm font-medium text-white hover:bg-[#1285cc] transition-colors">
               Tambah
             </button>
           </div>
