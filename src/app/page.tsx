@@ -105,9 +105,9 @@ export default function Home() {
                   Alflow membantu Anda mengurus semua dari satu tempat. Catat pengeluaran, atur deadline, sampai pantau tabungan — tanpa harus membuka banyak aplikasi.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <button onClick={() => scrollToId("fitur")} className="inline-flex items-center gap-2 rounded-xl bg-[#1597e5] px-7 py-3.5 text-[15px] font-semibold text-white hover:bg-[#1285cc] transition-all shadow-lg shadow-[#65c4ff]/30">
+                  <Link href="/login" className="inline-flex items-center gap-2 rounded-xl bg-[#1597e5] px-7 py-3.5 text-[15px] font-semibold text-white hover:bg-[#1285cc] transition-all shadow-lg shadow-[#65c4ff]/30">
                     Coba Gratis <ArrowRight className="h-4 w-4" />
-                  </button>
+                  </Link>
                   <button onClick={() => scrollToId("fitur")} className="inline-flex items-center gap-2 rounded-xl border-2 border-[#1597e5] bg-white px-7 py-3 text-[15px] font-semibold text-[#1597e5] hover:bg-[#1597e5]/5 transition-all">
                     Lihat Fitur
                   </button>
@@ -510,9 +510,9 @@ export default function Home() {
                 Mulai dari sekarang. Gratis, tanpa kartu kredit, dan bisa langsung digunakan tanpa perlu mendaftar.
               </p>
               <div className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <button onClick={() => scrollToId("detail")} className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3.5 text-[15px] font-semibold text-[#1597e5] hover:bg-white/90 transition-all shadow-lg" style={{ boxShadow: "0 8px 30px rgba(0,0,0,.1)" }}>
+                <Link href="/login" className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3.5 text-[15px] font-semibold text-[#1597e5] hover:bg-white/90 transition-all shadow-lg" style={{ boxShadow: "0 8px 30px rgba(0,0,0,.1)" }}>
                   Mulai Gratis <ArrowRight className="h-4 w-4" />
-                </button>
+                </Link>
                 <a href="https://github.com/Zryyuu/zyto-web/releases/latest" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 px-8 py-3 text-[15px] font-medium text-white hover:bg-white/10 transition-all">
                   <Download className="h-4 w-4" /> Download APK
                 </a>
@@ -585,7 +585,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10 border-t border-[#e2e8f0]/60 pt-6 text-center text-[13px] text-[#94a3b8]">
-            © 2026 Alflow. Dibuat dengan sepenuh hati.
+            © 2026 Alflow. All rights reserved.
           </div>
         </div>
       </footer>
