@@ -81,7 +81,7 @@ export default function Home() {
       </nav>
 
       {/* ────────── HERO — asymmetric, not just grid ────────── */}
-      <section id="beranda" className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden">
+      <section id="beranda" className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden bg-[#f8fafc]">
         <div className="absolute -top-40 left-1/2 -z-10 h-[600px] w-[900px] -translate-x-1/2 rounded-full opacity-[.06] blur-3xl" style={{ background: "radial-gradient(ellipse, #65c4ff, transparent 70%)" }} />
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
@@ -146,10 +146,12 @@ export default function Home() {
             </Animate>
           </div>
         </div>
+        {/* gradient transition: light → dark */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 -mb-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, #f8fafc, #1a2332)" }} />
       </section>
 
       {/* ────────── FITUR — bento grid, dark bg ────────── */}
-      <section id="apa" className="bg-[#1a2332] py-24 sm:py-32">
+      <section id="apa" className="relative bg-[#1a2332] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="mx-auto max-w-2xl text-center mb-16">
@@ -229,10 +231,12 @@ export default function Home() {
             </Animate>
           </div>
         </div>
+        {/* gradient transition: dark → light */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 -mb-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, #1a2332, #f8fafc)" }} />
       </section>
 
       {/* ────────── REKAP BULANAN — full-bleed cerah ────────── */}
-      <section className="bg-[#f8fafc] py-24 sm:py-32">
+      <section className="relative bg-[#f8fafc] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
@@ -286,10 +290,12 @@ export default function Home() {
             </div>
           </Animate>
         </div>
+        {/* gradient transition: light → dark */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 -mb-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, #f8fafc, #1a2332)" }} />
       </section>
 
       {/* ────────── CARA KERJA — vertical stepper, gelap ────────── */}
-      <section id="cara" className="bg-[#1a2332] py-24 sm:py-32">
+      <section id="cara" className="relative bg-[#1a2332] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="text-center mb-16">
