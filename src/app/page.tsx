@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* ────────── FITUR — bento grid, dark bg ────────── */}
-      <section id="apa" className="bg-[#0f172a] py-24 sm:py-32">
+      <section id="apa" className="bg-[#1a2332] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="mx-auto max-w-2xl text-center mb-16">
@@ -289,7 +289,7 @@ export default function Home() {
       </section>
 
       {/* ────────── CARA KERJA — vertical stepper, gelap ────────── */}
-      <section id="cara" className="bg-[#0f172a] py-24 sm:py-32">
+      <section id="cara" className="bg-[#1a2332] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="text-center mb-16">
@@ -373,7 +373,7 @@ export default function Home() {
       </section>
 
       {/* Keuangan — gelap */}
-      <section className="bg-[#0f172a] py-24 sm:py-32">
+      <section className="bg-[#1a2332] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
@@ -428,8 +428,16 @@ export default function Home() {
                 <p className="mt-4 text-[15px] leading-[1.7] text-[#64748b]">
                   Buat rencana nabung untuk liburan, dana darurat, atau gadget baru. Atur juga budget bulanan per kategori — agar tidak melebihi batas.
                 </p>
+                <p className="mt-3 text-[15px] leading-[1.7] text-[#64748b]">
+                  Tetapkan berapa yang ingin disisihkan setiap bulan, kapan target harus tercapai, dan Alflow akan menghitung sisa yang perlu Anda kumpulkan. Semuanya terpantau dari satu tempat.
+                </p>
                 <ul className="mt-5 space-y-3">
-                  {["Target nabung dengan deadline", "Budget per kategori: Makanan, Transport, dll.", "Peringatan saat mendekati batas"].map(t => (
+                  {[
+                    "Target nabung dengan deadline — lihat progress bar-nya",
+                    "Budget per kategori: Makanan, Transport, Hiburan, dll.",
+                    "Peringatan otomatis saat pengeluaran mendekati batas",
+                    "Rekap akhir bulan — tahu uang habis untuk apa saja",
+                  ].map(t => (
                     <li key={t} className="flex items-start gap-2.5 text-[14px] text-[#475569]">
                       <div className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#eaf7ff]"><CheckCircle2 className="h-3 w-3 text-[#1597e5]" /></div>
                       {t}
