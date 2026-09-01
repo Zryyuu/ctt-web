@@ -547,7 +547,7 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Fitur — kanan, link ke penjelasan yang sesuai */}
+            {/* Fitur — tengah, link ke penjelasan yang sesuai */}
             <div>
               <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Fitur</p>
               <ul className="space-y-2.5">
@@ -557,22 +557,22 @@ export default function Home() {
                 <li><button onClick={() => scrollToId("rekap")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Rekap Bulanan</button></li>
               </ul>
             </div>
-          </div>
 
-          {/* Proyek — tengah */}
-          <div>
-            <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Proyek</p>
-            <ul className="space-y-2.5">
-              <li><a href="https://github.com/Zryyuu/zyto-web" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors"><Github className="h-4 w-4" /> GitHub</a></li>
-              <li><a href="https://instagram.com/alflow" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                Instagram
-              </a></li>
-              <li><a href="https://tiktok.com/@alflow" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-                TikTok
-              </a></li>
-            </ul>
+            {/* Contact — kanan */}
+            <div>
+              <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Kontak</p>
+              <ul className="space-y-2.5">
+                <li><a href="https://github.com/Zryyuu/zyto-web" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors"><Github className="h-4 w-4" /> GitHub</a></li>
+                <li><a href="https://instagram.com/alflow" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  Instagram
+                </a></li>
+                <li><a href="https://tiktok.com/@alflow" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                  TikTok
+                </a></li>
+              </ul>
+            </div>
           </div>
 
           <div className="mt-10 border-t border-[#e2e8f0]/60 pt-6 text-center text-[13px] text-[#94a3b8]">
