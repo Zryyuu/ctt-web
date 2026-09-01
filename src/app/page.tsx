@@ -371,7 +371,7 @@ export default function Home() {
       </section>
 
       {/* ────────── DETAIL — Keuangan ────────── */}
-      <section className="relative overflow-hidden bg-[#ffffff] py-24 sm:py-32">
+      <section id="detail-keuangan" className="relative overflow-hidden bg-[#ffffff] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
@@ -414,7 +414,7 @@ export default function Home() {
       </section>
 
       {/* ────────── DETAIL — Tabungan & Anggaran ────────── */}
-      <section className="relative overflow-hidden bg-[#f6fcff] py-24 sm:py-32">
+      <section id="detail-tabungan" className="relative overflow-hidden bg-[#f6fcff] py-24 sm:py-32">
         <div className="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-[#65c4ff]/10" />
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
@@ -525,8 +525,8 @@ export default function Home() {
       {/* ────────── FOOTER ────────── */}
       <footer className="border-t border-[#e2e8f0]/60 bg-white">
         <div className="mx-auto max-w-6xl px-5 py-12">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="sm:col-span-2 lg:col-span-1">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            <div className="lg:col-span-1">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg" style={{ background: "linear-gradient(135deg, #65c4ff, #1597e5)" }}>
                   <span className="text-[12px] font-bold text-white">A</span>
@@ -535,25 +535,19 @@ export default function Home() {
               </div>
               <p className="mt-3 max-w-xs text-[14px] leading-relaxed text-[#64748b]">Atur tugas. Kelola uang. Jalani hari dengan lebih terarah.</p>
             </div>
+
+            {/* Navigasi — kiri */}
             <div>
-              <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Fitur</p>
-              <ul className="space-y-2.5">
-                <li><button onClick={() => scrollToId("fitur")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Tugas</button></li>
-                <li><button onClick={() => scrollToId("fitur")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Keuangan</button></li>
-                <li><button onClick={() => scrollToId("detail")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Anggaran</button></li>
-                <li><button onClick={() => scrollToId("detail")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Tabungan</button></li>
-                <li><button onClick={() => scrollToId("rekap")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Rekap</button></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Tautan</p>
+              <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Navigasi</p>
               <ul className="space-y-2.5">
                 <li><button onClick={() => scrollToId("beranda")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Beranda</button></li>
+                <li><button onClick={() => scrollToId("fitur")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Fitur</button></li>
                 <li><button onClick={() => scrollToId("cara")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Cara Kerja</button></li>
-                <li><button onClick={() => scrollToId("rekap")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Rekap Bulanan</button></li>
                 <li><a href="https://github.com/Zryyuu/zyto-web/releases/latest" target="_blank" rel="noopener noreferrer" className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Unduh APK</a></li>
               </ul>
             </div>
+
+            {/* Proyek — tengah */}
             <div>
               <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Proyek</p>
               <ul className="space-y-2.5">
@@ -566,6 +560,17 @@ export default function Home() {
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
                   TikTok
                 </a></li>
+              </ul>
+            </div>
+
+            {/* Fitur — kanan, link ke penjelasan yang sesuai */}
+            <div>
+              <p className="text-[13px] font-semibold text-[#0f172a] mb-4">Fitur</p>
+              <ul className="space-y-2.5">
+                <li><button onClick={() => scrollToId("detail")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Catatan Tugas</button></li>
+                <li><button onClick={() => scrollToId("detail-keuangan")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Manajemen Keuangan</button></li>
+                <li><button onClick={() => scrollToId("detail-tabungan")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Anggaran &amp; Tabungan</button></li>
+                <li><button onClick={() => scrollToId("rekap")} className="text-[14px] text-[#64748b] hover:text-[#1597e5] transition-colors">Rekap Bulanan</button></li>
               </ul>
             </div>
           </div>
