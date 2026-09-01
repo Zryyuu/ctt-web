@@ -332,12 +332,14 @@ export default function Home() {
             ))}
           </div>
         </div>
+        {/* gradient transition: dark → light */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 -mb-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, #1a2332, #f8fafc)" }} />
       </section>
 
       {/* ────────── DETAIL — alternating full-bleed sections ────────── */}
 
       {/* Tugas — cerah */}
-      <section id="detail" className="bg-[#f8fafc] py-24 sm:py-32">
+      <section id="detail" className="relative bg-[#f8fafc] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
@@ -376,10 +378,12 @@ export default function Home() {
             </div>
           </Animate>
         </div>
+        {/* gradient transition: light → dark */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 -mb-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, #f8fafc, #1a2332)" }} />
       </section>
 
       {/* Keuangan — gelap */}
-      <section className="bg-[#1a2332] py-24 sm:py-32">
+      <section className="relative bg-[#1a2332] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
@@ -419,10 +423,12 @@ export default function Home() {
             </div>
           </Animate>
         </div>
+        {/* gradient transition: dark → light */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 -mb-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, #1a2332, #f8fafc)" }} />
       </section>
 
       {/* Tabungan & Anggaran — cerah */}
-      <section className="bg-[#f8fafc] py-24 sm:py-32">
+      <section className="relative bg-[#f8fafc] py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
@@ -507,7 +513,7 @@ export default function Home() {
       </section>
 
       {/* ────────── FINAL CTA ────────── */}
-      <section className="py-20 sm:py-28">
+      <section className="py-20 sm:py-28 bg-[#f8fafc]">
         <div className="mx-auto max-w-6xl px-5">
           <Animate>
             <div className="relative overflow-hidden rounded-[24px] p-10 text-center sm:p-16" style={{ background: "linear-gradient(135deg, #65c4ff 0%, #1597e5 100%)" }}>
